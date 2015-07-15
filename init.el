@@ -19,11 +19,6 @@
 (when is-mac
   (setq mac-command-modifier 'control))
 
-;; Setup environment variables from the user's shell.
-(when is-mac
-  (require-package 'exec-path-from-shell)
-  (exec-path-from-shell-initialize))
-
 ;; Load Paths
 (add-to-list 'load-path "~/.emacs.d/themes/")
 

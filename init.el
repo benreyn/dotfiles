@@ -27,12 +27,19 @@
 (color-theme-tomorrow--define-theme night)
 
 ;; Install packages with error handling for my work computer
-(setq package-list '(popup
-		     auto-complete
-		     chess
-		     emmet-mode
-		     php-mode
-		     yasnippet))
+(setq package-list '(flymake
+		flymake-css
+		flymake-php 
+		flymake-python-pyflakes 
+		flymake-ruby 
+		flymake-easy
+		magit
+		multiple-cursors
+		php-mode
+		yasnippet
+		auto-complete
+		popup
+		emmet-mode))
 (setq package-archives '(("elpa" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -64,6 +71,13 @@
                   week))
       (message "%s" file)
       (delete-file file))))
+      
+;; Multiple cursors setup
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Add hooks
 (add-hook 'prog-mode-hook 'electric-pair-mode)

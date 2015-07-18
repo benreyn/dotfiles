@@ -1,5 +1,9 @@
-# Compiled
+
 *.elc
 
-# Packaging
 .cask
+elpa
+eshell
+ido.last
+auto-save-list
+url

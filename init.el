@@ -22,9 +22,10 @@
 ;; Load Paths
 (add-to-list 'load-path "~/.emacs.d/themes/")
 
-;; Color Theme
+;; Color Theme and font-size
 (require 'color-theme-tomorrow)
 (color-theme-tomorrow--define-theme night)
+(set-default-font "Menlo 14")
 
 ;; Install packages
 (setq package-list '(flymake

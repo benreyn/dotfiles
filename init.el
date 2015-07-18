@@ -46,7 +46,7 @@
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))                  
 (package-initialize)
-(condition-case err
+(unless package-archive-contents
   (package-refresh-contents))
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -99,7 +99,6 @@
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   )
-
 
 ;; Add hooks
 (add-hook 'prog-mode-hook 'electric-pair-mode)

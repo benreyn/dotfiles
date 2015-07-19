@@ -17,7 +17,7 @@
   
 ;; Set mac command key
 (when is-mac
-  (setq mac-command-modifier 'control))
+  (setq mac-command-modifier 'meta))
 
 ;; Load Paths
 (add-to-list 'load-path "~/.emacs.d/themes/")

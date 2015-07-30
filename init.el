@@ -25,7 +25,10 @@
 ;; Color Theme and font-size
 (require 'color-theme-tomorrow)
 (color-theme-tomorrow--define-theme night)
-(set-default-font "Menlo 14")
+
+(when is-mac
+  (set-default-font "Menlo 14"))
+	
 
 ;; Install packages
 (setq package-list '(flymake

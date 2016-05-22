@@ -47,3 +47,9 @@
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+
+;; Add hooks
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'prog-mode-hook 'auto-complete-mode)
+(add-hook 'prog-mode-hook 'linum-mode)

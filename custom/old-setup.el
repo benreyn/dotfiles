@@ -19,15 +19,14 @@
 (when is-mac
   (setq mac-command-modifier 'meta))
 
-;; Version control and backup file management
-(setq
-   backup-by-copying t
-   backup-directory-alist
-   '(("." . "~/.temp"))
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)
+;; Version control and backup file management   
+(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
+(setq backup-directory-alist
+      `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+      emacs-tmp-dir)
 (message "Deleting old backup files...")
 (let ((week (* 60 60 24 7))
       (current (float-time (current-time))))
@@ -53,3 +52,24 @@
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook 'auto-complete-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'js-mode-hook (lambda () (ember-mode t)))
+(add-hook 'web-mode-hook (lambda () (ember-mode t)))
+
+;; Autocomplete
+(ac-config-default)
+
+;; RSpec mode
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+
+;; Gimme my shell
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$"
+                          ""
+                          (shell-command-to-string "$SHELL --login -i -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq eshell-path-env path-from-shell) ; for eshell users
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+

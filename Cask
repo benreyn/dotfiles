@@ -11,6 +11,7 @@
 (depends-on "epl")
 (depends-on "f")
 (depends-on "git-commit")
+(depends-on "handlebars-sgml-mode")
 (depends-on "inf-ruby")
 (depends-on "magit")
 (depends-on "magit-popup")
@@ -21,4 +22,5 @@
 (depends-on "rspec-mode")
 (depends-on "s")
 (depends-on "shut-up")
+(depends-on "web-mode")
 (depends-on "with-editor")

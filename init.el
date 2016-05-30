@@ -12,4 +12,4 @@
 (color-theme-tomorrow--define-theme night)
 
 ;; Load me some files!
-(load "old-setup.el")
+(load "setup.el")

@@ -21,22 +21,22 @@
 
 ;; Version control and backup file management
 (setq create-lockfiles nil)
-(defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
-(setq backup-directory-alist
-      `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
-      emacs-tmp-dir)
-(message "Deleting old backup files...")
-(let ((week (* 60 60 24 7))
-      (current (float-time (current-time))))
-  (dolist (file (directory-files temporary-file-directory t))
-    (when (and (backup-file-name-p file)
-               (> (- current (float-time (fifth (file-attributes file))))
-                  week))
-      (message "%s" file)
-      (delete-file file))))
+;; (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
+;; (setq backup-directory-alist
+;;       `((".*" . ,emacs-tmp-dir)))
+;; (setq auto-save-file-name-transforms
+;;       `((".*" ,emacs-tmp-dir t)))
+;; (setq auto-save-list-file-prefix
+;;       emacs-tmp-dir)
+;; (message "Deleting old backup files...")
+;; (let ((week (* 60 60 24 7))
+;;       (current (float-time (current-time))))
+;;   (dolist (file (directory-files temporary-file-directory t))
+;;     (when (and (backup-file-name-p file)
+;;                (> (- current (float-time (fifth (file-attributes file))))
+;;                   week))
+;;       (message "%s" file)
+;;       (delete-file file))))
 
 ;; Multiple cursors setup
 (require 'multiple-cursors)
@@ -134,7 +134,7 @@
 
 ;; Scroll Margins
 (setq scroll-margin 5
-      scroll-preserve-screen-position 1)
+     scroll-preserve-screen-position 1)
 
 ;; File path in window name
 (setq-default frame-title-format '((:eval (if (buffer-file-name)

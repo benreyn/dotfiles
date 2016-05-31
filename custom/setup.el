@@ -19,24 +19,14 @@
 (when is-mac
   (setq mac-command-modifier 'meta))
 
-;; Version control and backup file management
+;; Lock files are annoying
 (setq create-lockfiles nil)
-;; (defconst emacs-tmp-dir (format "%s/%s%s/" temporary-file-directory "emacs" (user-uid)))
-;; (setq backup-directory-alist
-;;       `((".*" . ,emacs-tmp-dir)))
-;; (setq auto-save-file-name-transforms
-;;       `((".*" ,emacs-tmp-dir t)))
-;; (setq auto-save-list-file-prefix
-;;       emacs-tmp-dir)
-;; (message "Deleting old backup files...")
-;; (let ((week (* 60 60 24 7))
-;;       (current (float-time (current-time))))
-;;   (dolist (file (directory-files temporary-file-directory t))
-;;     (when (and (backup-file-name-p file)
-;;                (> (- current (float-time (fifth (file-attributes file))))
-;;                   week))
-;;       (message "%s" file)
-;;       (delete-file file))))
+
+;; Store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; Multiple cursors setup
 (require 'multiple-cursors)

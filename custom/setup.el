@@ -188,3 +188,6 @@
 ;; Making dabbrev a bit nicer
 (setq dabbrev-abbrev-skip-leading-regexp ":")
 (setq dabbrev-backward-only t)
+
+;; Quiet please! No dinging
+(setq visible-bell 1)

@@ -190,7 +190,10 @@
 (setq dabbrev-backward-only t)
 
 ;; Quiet please! No dinging
-(setq visible-bell 1)
+(setq visible-bell nil)
+(setq ring-bell-function (lambda ()
+                           (invert-face 'mode-line)
+                           (run-with-timer 0.1 nil 'invert-face 'mode-line)))
 
 ;; Org stuff
 (require 'ox-gfm)

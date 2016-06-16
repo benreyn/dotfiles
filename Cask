@@ -26,6 +26,7 @@
 (depends-on "magit")
 (depends-on "magit-popup")
 (depends-on "multiple-cursors")
+(depends-on "ox-gfm")
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "popup")

@@ -191,3 +191,6 @@
 
 ;; Quiet please! No dinging
 (setq visible-bell 1)
+
+;; Org stuff
+(require 'ox-gfm)

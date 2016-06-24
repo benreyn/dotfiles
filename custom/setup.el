@@ -197,3 +197,6 @@
 
 ;; Org stuff
 (require 'ox-gfm)
+
+;; rspec mode conig
+(setq compilation-scroll-output t)

@@ -200,3 +200,9 @@
 
 ;; rspec mode conig
 (setq compilation-scroll-output t)
+
+;; Git gutter
+(global-git-gutter-mode +1)
+(git-gutter:linum-setup)
+(custom-set-variables
+ '(git-gutter:update-interval 2))

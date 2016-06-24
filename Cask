@@ -14,6 +14,7 @@
 (depends-on "f")
 (depends-on "fiplr")
 (depends-on "git-commit")
+(depends-on "git-gutter")
 (depends-on "goto-chg")
 (depends-on "grizzl")
 (depends-on "haml-mode")

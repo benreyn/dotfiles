@@ -5,6 +5,7 @@
 (depends-on "ac-helm")
 (depends-on "async")
 (depends-on "auto-complete")
+(depends-on "bash-completion")
 (depends-on "cask")
 (depends-on "cl-lib-highlight")
 (depends-on "dash")

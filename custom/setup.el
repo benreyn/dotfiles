@@ -211,6 +211,8 @@
 
 ;; editorconfig
 (editorconfig-mode 1)
+(add-hook 'editorconfig-custom-hooks
+  (lambda (hash) (setq web-mode-block-padding 0)))
 
 ;; Bash auto-completion
 (autoload 'bash-completion-dynamic-complete 

@@ -1,0 +1,19 @@
+[user]
+    name = Benjamin Reynolds
+    email = breyno127@gmail.com
+[core]
+  	editor = emacsclient
+    whitespace = off
+    excludesfile = ~/.gitignore
+[advice]
+    statusuoption = false
+[color]
+    ui = true
+[push]
+    default = simple
+[alias]
+	st = status
+	ad = add --all
+	cm = commit -m
+	lg = log --graph --oneline
+  sync = !git fetch upstream && git merge upstream/master

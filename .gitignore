@@ -1,0 +1,16 @@
+
+*.elc
+
+.cask
+elpa
+eshell
+ido.last
+auto-save-list
+url
+ac-comphist.dat
+games
+ido.last~
+plugins
+tramp
+.mc-lists.el
+recentf

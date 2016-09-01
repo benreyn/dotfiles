@@ -43,6 +43,7 @@
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook 'auto-complete-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'js-mode-hook (lambda () (ember-mode t)))
 (add-hook 'web-mode-hook (lambda () (ember-mode t)))
 

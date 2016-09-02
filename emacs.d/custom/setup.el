@@ -221,3 +221,6 @@
   "BASH completion hook")
 (add-hook 'shell-dynamic-complete-functions
   'bash-completion-dynamic-complete)
+
+;; start a server after launch
+(server-start)

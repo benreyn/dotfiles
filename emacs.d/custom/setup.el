@@ -27,12 +27,6 @@
 ;; Lock files are annoying
 (setq create-lockfiles nil)
 
-;; Store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
 ;; Multiple cursors setup
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
@@ -48,7 +42,6 @@
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'prog-mode-hook 'auto-complete-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
-(add-hook 'prog-mode-hook 'subword-mode)
 (add-hook 'js-mode-hook (lambda () (ember-mode t)))
 (add-hook 'web-mode-hook (lambda () (ember-mode t)))
 
@@ -139,17 +132,11 @@
                                               (abbreviate-file-name (buffer-file-name)) "%f"))))
 
 (scroll-bar-mode 0) ;; Disables the scroll bar
-(setq-default fill-column 80) ;; Sets a 80 character line width
-(setq inhibit-startup-screen t) ;; Don’t display the default splash screen
 (setq large-file-warning-threshold nil) ;; Don’t warn me about opening large files
 (setq x-select-enable-clipboard t) ;; Enable copy/past-ing from clipboard
 (setq system-uses-terminfo nil) ;; Fix weird color escape sequences
 (prefer-coding-system 'utf-8) ;; Prefer UTF-8 encoding
-(fset 'yes-or-no-p 'y-or-n-p) ;; Answer with y and n instead of yes and no
-(setq confirm-kill-emacs 'yes-or-no-p) ;; Ask for confirmation before closing emacs
-(global-auto-revert-mode 1) ;; Always reload the file if it changed on disk
 (setq-default line-spacing 1) ;; A nice line height
-(show-paren-mode 1) ;; Highlight matching parens
 (setq ns-use-srgb-colorspace t) ;; SRGB support for OSX
 (tool-bar-mode 0) ;; Disable the toolbar
 
@@ -197,7 +184,7 @@
 (setq dabbrev-abbrev-skip-leading-regexp ":")
 (setq dabbrev-backward-only t)
 
-;; Quiet please! No dinging
+;; Override sensible-defaults bell with custom mode-line flash
 (setq visible-bell nil)
 (setq ring-bell-function (lambda ()
                            (invert-face 'mode-line)

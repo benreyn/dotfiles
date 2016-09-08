@@ -13,6 +13,10 @@
 (line-number-mode t)
 (column-number-mode t)
 
+;; Highlighy current line
+(when window-system
+  (global-hl-line-mode))
+
 ;; Are we on a mac?
 (setq is-mac (equal system-type 'darwin))
 
@@ -208,11 +212,46 @@
   (lambda (hash) (setq web-mode-block-padding 0)))
 
 ;; Bash auto-completion
-(autoload 'bash-completion-dynamic-complete 
+(autoload 'bash-completion-dynamic-complete
   "bash-completion"
   "BASH completion hook")
 (add-hook 'shell-dynamic-complete-functions
   'bash-completion-dynamic-complete)
+
+;; Steal some stuff from https://github.com/hrs/dotfiles
+(defun bjr/split-window-below-and-switch ()
+  "Split the window horizontally, then switch to the new pane."
+  (interactive)
+  (split-window-below)
+  (other-window 1))
+
+(defun bjr/split-window-right-and-switch ()
+  "Split the window vertically, then switch to the new pane."
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+
+(defun bjr/de-unicode ()
+  "Tidy up a buffer by replacing all special Unicode characters
+     (smart quotes, etc.) with their more sane cousins"
+  (interactive)
+  (let ((unicode-map '(("[\u2018\|\u2019\|\u201A\|\uFFFD]" . "'")
+                       ("[\u201c\|\u201d\|\u201e]" . "\"")
+                       ("\u2013" . "--")
+                       ("\u2014" . "---")
+                       ("\u2026" . "...")
+                       ("\u00A9" . "(c)")
+                       ("\u00AE" . "(r)")
+                       ("\u2122" . "TM")
+                       ("[\u02DC\|\u00A0]" . " "))))
+    (save-excursion
+      (loop for (key . value) in unicode-map
+            do
+            (goto-char (point-min))
+            (replace-regexp key value)))))
+
+(global-set-key (kbd "C-x 2") 'bjr/split-window-below-and-switch)
+(global-set-key (kbd "C-x 3") 'bjr/split-window-right-and-switch)
 
 ;; start a server after launch
 (server-start)

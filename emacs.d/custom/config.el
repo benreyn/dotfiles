@@ -20,9 +20,17 @@
 ;; Are we on a mac?
 (setq is-mac (equal system-type 'darwin))
 
-;; ido mode
+;; ido and flx ido
 (ido-mode t)
 (setq ido-enable-flex-matching t)
+(ido-everywhere t)
+(flx-ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+
+;; ido vertical
+(ido-vertical-mode t)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 ;; Set mac command key
 (when is-mac

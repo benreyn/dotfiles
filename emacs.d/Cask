@@ -2,6 +2,7 @@
 (source "marmalade" "http://marmalade-repo.org/packages/")
 (source "melpa" "http://melpa.milkbox.net/packages/")
 
+(depends-on "ag")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "bash-completion")

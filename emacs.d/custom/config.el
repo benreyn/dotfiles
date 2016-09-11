@@ -221,6 +221,8 @@
 ;; Projectile
 (projectile-global-mode)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
+(global-set-key (kbd "C-x F") 'projectile-ag)
+
 ;; Steal some stuff from https://github.com/hrs/dotfiles
 (defun bjr/split-window-below-and-switch ()
   "Split the window horizontally, then switch to the new pane."

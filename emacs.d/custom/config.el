@@ -121,11 +121,6 @@
 (setq-default c-basic-offset 2)
 (setq-default js-indent-level 2)
 
-;; Fiplr
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
-(setq fiplr-ignored-globs '((directories (".git" ".svn" "node_modules" "tmp" "bower_components" "dist"))
-                            (files ("*.jpg" "*.png" "*.zip" "*~"))))
-
 ;; Resizing windows should be easy
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
@@ -223,6 +218,9 @@
 (add-hook 'shell-dynamic-complete-functions
   'bash-completion-dynamic-complete)
 
+;; Projectile
+(projectile-global-mode)
+(global-set-key (kbd "C-x f") 'projectile-find-file)
 ;; Steal some stuff from https://github.com/hrs/dotfiles
 (defun bjr/split-window-below-and-switch ()
   "Split the window horizontally, then switch to the new pane."

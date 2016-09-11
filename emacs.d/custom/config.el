@@ -121,9 +121,6 @@
 (setq-default c-basic-offset 2)
 (setq-default js-indent-level 2)
 
-;; Helm
-(require 'helm-config)
-
 ;; Fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 (setq fiplr-ignored-globs '((directories (".git" ".svn" "node_modules" "tmp" "bower_components" "dist"))

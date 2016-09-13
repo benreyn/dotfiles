@@ -27,3 +27,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
 export PS1="$purple\u$blue \w$green\$(__git_ps1) \n$ $reset"
+
+# Aliases
+alias be='bundle exec'
+alias emacs='emacsclient -t'

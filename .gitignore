@@ -1,5 +1,6 @@
 
 *.elc
+*.eld
 
 .cask
 elpa

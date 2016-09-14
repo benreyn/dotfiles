@@ -258,5 +258,23 @@
 (global-set-key (kbd "C-x 2") 'bjr/split-window-below-and-switch)
 (global-set-key (kbd "C-x 3") 'bjr/split-window-right-and-switch)
 
+;; Diminish many of the minor modes that are active on most buffers
+(defmacro diminish-minor-mode (filename mode &optional abbrev)
+  `(eval-after-load (symbol-name ,filename)
+     '(diminish ,mode ,abbrev)))
+
+(defmacro diminish-major-mode (mode-hook abbrev)
+  `(add-hook ,mode-hook
+             (lambda () (setq mode-name ,abbrev))))
+
+(diminish-minor-mode 'projectile 'projectile-mode)
+(diminish-minor-mode 'subword 'subword-mode)
+(diminish-minor-mode 'git-gutter 'git-gutter-mode)
+(diminish-minor-mode 'auto-complete 'auto-complete-mode)
+(diminish-minor-mode 'autorevert 'auto-revert-mode)
+
+(diminish-major-mode 'emacs-lisp-mode-hook "el")
+(diminish-major-mode 'lisp-interaction-mode-hook "λ")
+
 ;; start a server after launch
 (server-start)

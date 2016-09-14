@@ -86,6 +86,7 @@
 
 ;; RSpec mode
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+(add-hook 'yaml-mode-hook 'rspec-mode)
 
 ;; Navigate between windows using Alt-1, Alt-2, Shift-left, shift-up, shift-right
 (windmove-default-keybindings)

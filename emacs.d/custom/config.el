@@ -225,13 +225,13 @@
 (global-set-key (kbd "C-x F") 'projectile-ag)
 
 ;; Steal some stuff from https://github.com/hrs/dotfiles
-(defun bjr/split-window-below-and-switch ()
+(defun hrs/split-window-below-and-switch ()
   "Split the window horizontally, then switch to the new pane."
   (interactive)
   (split-window-below)
   (other-window 1))
 
-(defun bjr/split-window-right-and-switch ()
+(defun hrs/split-window-right-and-switch ()
   "Split the window vertically, then switch to the new pane."
   (interactive)
   (split-window-right)
@@ -251,7 +251,7 @@
   (kill-buffer "migrate"))
 
 
-(defun bjr/de-unicode ()
+(defun hrs/de-unicode ()
   "Tidy up a buffer by replacing all special Unicode characters
      (smart quotes, etc.) with their more sane cousins"
   (interactive)
@@ -270,8 +270,8 @@
             (goto-char (point-min))
             (replace-regexp key value)))))
 
-(global-set-key (kbd "C-x 2") 'bjr/split-window-below-and-switch)
-(global-set-key (kbd "C-x 3") 'bjr/split-window-right-and-switch)
+(global-set-key (kbd "C-x 2") 'hrs/split-window-below-and-switch)
+(global-set-key (kbd "C-x 3") 'hrs/split-window-right-and-switch)
 
 ;; Diminish many of the minor modes that are active on most buffers
 (defmacro diminish-minor-mode (filename mode &optional abbrev)

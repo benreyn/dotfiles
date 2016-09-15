@@ -237,6 +237,20 @@
   (split-window-right)
   (other-window 1))
 
+(defun hrs/visit-last-dired-file ()
+  "Open the last file in an open dired buffer."
+  (end-of-buffer)
+  (previous-line)
+  (dired-find-file))
+
+(defun hrs/visit-last-migration ()
+  "Open the last file in 'db/migrate/'. Relies on projectile. Pretty sloppy."
+  (interactive)
+  (dired (expand-file-name "db/migrate" (projectile-project-root)))
+  (hrs/visit-last-dired-file)
+  (kill-buffer "migrate"))
+
+
 (defun bjr/de-unicode ()
   "Tidy up a buffer by replacing all special Unicode characters
      (smart quotes, etc.) with their more sane cousins"

@@ -212,6 +212,9 @@
 (add-hook 'editorconfig-custom-hooks
   (lambda (hash) (setq web-mode-block-padding 0)))
 
+;; Flycheck
+(global-flycheck-mode)
+
 ;; Bash auto-completion
 (autoload 'bash-completion-dynamic-complete
   "bash-completion"

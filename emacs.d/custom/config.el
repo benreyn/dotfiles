@@ -224,6 +224,7 @@
 
 ;; Projectile
 (projectile-global-mode)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 (global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "C-x F") 'projectile-ag)
 

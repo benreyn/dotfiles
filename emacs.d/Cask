@@ -43,6 +43,7 @@
 (depends-on "sass-mode")
 (depends-on "seq")
 (depends-on "shut-up")
+(depends-on "slim-mode")
 (depends-on "undo-tree")
 (depends-on "web-mode")
 (depends-on "with-editor")

@@ -60,9 +60,6 @@
 ;; Autocomplete
 (ac-config-default)
 
-;; RSpec mode
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
-
 ;; Gimme my shell
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell (replace-regexp-in-string
@@ -87,6 +84,7 @@
 ;; RSpec mode
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 (add-hook 'yaml-mode-hook 'rspec-mode)
+(add-hook 'slim-mode-hook 'rspec-mode)
 
 ;; Navigate between windows using Alt-1, Alt-2, Shift-left, shift-up, shift-right
 (windmove-default-keybindings)

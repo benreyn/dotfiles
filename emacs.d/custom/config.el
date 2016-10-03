@@ -142,6 +142,7 @@
 (setq-default line-spacing 1) ;; A nice line height
 (setq ns-use-srgb-colorspace t) ;; SRGB support for OSX
 (tool-bar-mode 0) ;; Disable the toolbar
+(setq require-final-newline t) ;; Avoid stlye issues with final newline
 
 ;; Open splits horizontally
 (setq split-height-threshold 0)

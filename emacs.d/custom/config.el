@@ -143,6 +143,7 @@
 (setq ns-use-srgb-colorspace t) ;; SRGB support for OSX
 (tool-bar-mode 0) ;; Disable the toolbar
 (setq require-final-newline t) ;; Avoid stlye issues with final newline
+(setq ruby-insert-encoding-magic-comment nil) ;; Don't auto-add encoding comments
 
 ;; Open splits horizontally
 (setq split-height-threshold 0)

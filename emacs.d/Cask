@@ -39,6 +39,7 @@
 (depends-on "projectile-rails")
 (depends-on "rake")
 (depends-on "rspec-mode")
+(depends-on "ruby-end")
 (depends-on "s")
 (depends-on "sass-mode")
 (depends-on "shut-up")

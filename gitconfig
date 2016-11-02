@@ -12,8 +12,8 @@
 [push]
     default = simple
 [alias]
-	st = status
-	ad = add --all
-	cm = commit -m
-	lg = log --graph --oneline
+  ad = add --all
+  cm = commit -m
+  lg = log --graph --oneline
+  st = status
   sync = !git fetch upstream && git merge upstream/master

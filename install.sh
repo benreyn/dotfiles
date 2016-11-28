@@ -10,7 +10,7 @@ ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/emacs.d ~/.emacs.d
 ln -s ~/.dotfiles/offlineimap ~/.offlineimap
 ln -s ~/.dotfiles/offlineimaprc ~/.offlineimaprc
-
+ln -s ~/.dotfiles/msmtprc ~/.msmtprc
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

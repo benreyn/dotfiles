@@ -2,6 +2,8 @@
 *.elc
 *.eld
 *.cache
+*.pyc
+offlineimap/*/
 
 .cask
 elpa

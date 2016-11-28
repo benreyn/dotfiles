@@ -3,6 +3,9 @@
 (sensible-defaults/use-all-settings)
 (sensible-defaults/use-all-keybindings)
 
+;; Theme
+(load-theme 'sanityinc-tomorrow-night t)
+
 ;; Turn off splash screen and mouse interface
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))

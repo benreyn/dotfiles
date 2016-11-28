@@ -8,6 +8,9 @@ ln -s ~/.dotfiles/git-prompt.sh ~/.git-prompt.sh
 ln -s ~/.dotfiles/gitignore ~/.gitignore
 ln -s ~/.dotfiles/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/emacs.d ~/.emacs.d
+ln -s ~/.dotfiles/offlineimap ~/.offlineimap
+ln -s ~/.dotfiles/offlineimaprc ~/.offlineimaprc
+
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

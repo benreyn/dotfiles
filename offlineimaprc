@@ -1,0 +1,49 @@
+[general]
+accounts = personal, work
+pythonfile = ~/.offlineimap/config.py
+
+[Account personal]
+localrepository = personal-local
+remoterepository = personal-remote
+status_backend = sqlite
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/mail/personal
+nametrans = local_folder_to_gmail_folder
+
+[Repository personal-remote]
+type = Gmail
+holdconnectionopen = yes
+keepalive = 60
+maxconnections = 3
+realdelete = no
+remoteuser = breyno127@gmail.com
+remotepasseval = find_password("mail/personal")
+auth_mechanisms = PLAIN
+folderfilter = should_include_folder
+nametrans = gmail_folder_to_local_folder
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+
+[Account work]
+localrepository = work-local
+remoterepository = work-remote
+status_backend = sqlite
+
+[Repository work-local]
+type = Maildir
+localfolders = ~/mail/work
+nametrans = local_folder_to_gmail_folder
+
+[Repository work-remote]
+type = Gmail
+holdconnectionopen = yes
+keepalive = 60
+maxconnections = 3
+realdelete = no
+remoteuser = ben@zaarly.com
+remotepasseval = find_password("mail/work")
+folderfilter = should_include_folder
+nametrans = gmail_folder_to_local_folder
+auth_mechanisms = PLAIN
+sslcacertfile = /usr/local/etc/openssl/cert.pem

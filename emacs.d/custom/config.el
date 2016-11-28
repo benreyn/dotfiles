@@ -305,5 +305,58 @@
 (diminish-major-mode 'emacs-lisp-mode-hook "el")
 (diminish-major-mode 'lisp-interaction-mode-hook "λ")
 
+;; mu4e
+(require 'mu4e )
+
+(setq mu4e-contexts
+      `( ,(make-mu4e-context
+      :name "personal"
+      :enter-func (lambda () (mu4e-message "Switch to the personal context"))
+      :match-func (lambda (msg)
+        (when msg
+          (mu4e-message-contact-field-matches msg
+            :to "breyno127@gmail.com")))
+      :vars '(( user-mail-address	. "breyno127@gmail.com" )
+              ( user-full-name	  . "Benjamin Reynolds"   )
+              ( mu4e-compose-signature .
+                 (concat
+                   "Benjamin Reynolds\n"
+                   "Software Developer"))))
+         ,(make-mu4e-context
+      :name "work"
+      :enter-func (lambda () (mu4e-message "Switch to the work context"))
+      :match-func (lambda (msg)
+        (when msg
+          (mu4e-message-contact-field-matches msg
+            :to "ben@zaarly.com")))
+       :vars '(( user-mail-address . "ben@zaarly.com"    )
+               ( user-full-name	   . "Benjamin Reynolds" )
+               ( mu4e-compose-signature .
+                 (concat
+                  "Benjamin Reynolds\n"
+                  "Software Developer\n"
+                  "Zaarly Inc"))))))
+
+(setq mu4e-maildir "~/mail")
+(setq mu4e-drafts-folder "/drafts")
+(setq mu4e-sent-folder   "/sent")
+(setq mu4e-trash-folder  "/trash")
+(setq mu4e-refile-folder "/archive")
+(setq mu4e-sent-messages-behavior 'delete)
+
+(setq mu4e-maildir-shortcuts
+    '( ("/INBOX"     . ?i)
+       ("/sent"      . ?s)
+       ("/trash"     . ?t)
+       ("/arhive"    . ?a)))
+
+(setq mu4e-get-mail-command "offlineimap")
+(setq mu4e-update-interval 180)
+
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq sendmail-program "/usr/local/bin/msmtp")
+
+(setq message-kill-buffer-on-exit t)
+
 ;; start a server after launch
 (server-start)

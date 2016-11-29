@@ -10,7 +10,7 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 
 ;; Prevent writing package-selected-packages
-(defun package--save-selected-packages (&rest opt) nil)
+(setq custom-file "/dev/null")
 
 ;; Load me some files!
 (load "config.el")

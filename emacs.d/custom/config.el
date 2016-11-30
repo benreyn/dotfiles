@@ -310,6 +310,7 @@
 
 ;; mu4e
 (require 'mu4e )
+(global-set-key (kbd "C-x m") 'mu4e)
 
 (setq mu4e-contexts
       `( ,(make-mu4e-context
@@ -319,8 +320,10 @@
         (when msg
           (mu4e-message-contact-field-matches msg
             :to "breyno127@gmail.com")))
-      :vars '(( user-mail-address	. "breyno127@gmail.com" )
-              ( user-full-name	  . "Benjamin Reynolds"   )
+      :vars '(( user-mail-address . "breyno127@gmail.com" )
+              ( user-full-name    . "Benjamin Reynolds"   )
+              ( mu4e-maildir      . "~/mail/personal"     )
+              ( mu4e-mu-home      . "~/.mu/personal"      )
               ( mu4e-compose-signature .
                  (concat
                    "Benjamin Reynolds\n"
@@ -333,14 +336,15 @@
           (mu4e-message-contact-field-matches msg
             :to "ben@zaarly.com")))
        :vars '(( user-mail-address . "ben@zaarly.com"    )
-               ( user-full-name	   . "Benjamin Reynolds" )
+               ( user-full-name    . "Benjamin Reynolds" )
+               ( mu4e-maildir      . "~/mail/work"       )
+               ( mu4e-mu-home      . "~/.mu/work"        )
                ( mu4e-compose-signature .
                  (concat
                   "Benjamin Reynolds\n"
                   "Software Developer\n"
                   "Zaarly Inc"))))))
 
-(setq mu4e-maildir "~/mail")
 (setq mu4e-drafts-folder "/drafts")
 (setq mu4e-sent-folder   "/sent")
 (setq mu4e-trash-folder  "/trash")
@@ -351,7 +355,7 @@
     '( ("/INBOX"     . ?i)
        ("/sent"      . ?s)
        ("/trash"     . ?t)
-       ("/arhive"    . ?a)))
+       ("/archive"   . ?a)))
 
 (setq mu4e-get-mail-command "offlineimap")
 (setq mu4e-update-interval 180)
@@ -360,6 +364,16 @@
 (setq sendmail-program "/usr/local/bin/msmtp")
 
 (setq message-kill-buffer-on-exit t)
+
+;; mu4e notifications
+(setq mu4e-alert-interesting-mail-query
+      (concat
+       "flag:unread"
+       " AND NOT flag:trashed"
+       " AND maildir:"
+       "\"/INBOX\""))
+
+(add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
 
 ;; start a server after launch
 (server-start)

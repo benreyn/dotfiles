@@ -376,5 +376,10 @@
 
 (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
 
+;; smex
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
 ;; start a server after launch
 (server-start)

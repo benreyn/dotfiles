@@ -304,6 +304,7 @@
 (diminish-minor-mode 'git-gutter 'git-gutter-mode)
 (diminish-minor-mode 'auto-complete 'auto-complete-mode)
 (diminish-minor-mode 'autorevert 'auto-revert-mode)
+(diminish-minor-mode 'ruby-end 'ruby-end-mode)
 
 (diminish-major-mode 'emacs-lisp-mode-hook "el")
 (diminish-major-mode 'lisp-interaction-mode-hook "λ")

@@ -34,6 +34,7 @@
 (depends-on "log4e")
 (depends-on "magit")
 (depends-on "magit-popup")
+(depends-on "markdown-mode")
 (depends-on "mu4e-alert")
 (depends-on "multiple-cursors")
 (depends-on "ox-gfm")

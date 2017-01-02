@@ -18,3 +18,4 @@ plugins
 tramp
 .mc-lists.el
 recentf
+smex-items

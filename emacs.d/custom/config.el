@@ -4,7 +4,7 @@
 (sensible-defaults/use-all-keybindings)
 
 ;; Theme
-(load-theme 'sanityinc-tomorrow-eighties t)
+(load-theme 'dracula t)
 
 ;; Turn off splash screen and mouse interface
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))

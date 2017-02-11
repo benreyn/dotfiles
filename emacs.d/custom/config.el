@@ -381,5 +381,8 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
+;; rbenv
+(global-rbenv-mode)
+
 ;; start a server after launch
 (server-start)

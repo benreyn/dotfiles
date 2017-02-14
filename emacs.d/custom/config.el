@@ -305,9 +305,15 @@
 (diminish-minor-mode 'auto-complete 'auto-complete-mode)
 (diminish-minor-mode 'autorevert 'auto-revert-mode)
 (diminish-minor-mode 'ruby-end 'ruby-end-mode)
+(diminish-minor-mode 'yasnippet 'yas-minor-mode)
 
 (diminish-major-mode 'emacs-lisp-mode-hook "el")
 (diminish-major-mode 'lisp-interaction-mode-hook "λ")
+
+;; yasnippet
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
+(setq yas/indent-line nil)
 
 ;; engine-mode
 (require 'engine-mode)

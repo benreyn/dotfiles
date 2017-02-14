@@ -1,0 +1,6 @@
+#name: context 'when something' do ... end
+# key: cont
+# --
+context '${1:when something}' do
+  $0
+end

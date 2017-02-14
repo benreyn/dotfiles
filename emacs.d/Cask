@@ -16,6 +16,7 @@
 (depends-on "dracula-theme")
 (depends-on "editorconfig")
 (depends-on "ember-mode")
+(depends-on "engine-mode")
 (depends-on "epl")
 (depends-on "f")
 (depends-on "flx")

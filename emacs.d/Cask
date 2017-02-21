@@ -24,6 +24,7 @@
 (depends-on "elixir-mode")
 (depends-on "elm-mode")
 (depends-on "ember-mode")
+(depends-on "emojify")
 (depends-on "engine-mode")
 (depends-on "epl")
 (depends-on "erlang")

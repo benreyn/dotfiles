@@ -6,6 +6,9 @@
 ;; Theme
 (load-theme 'dracula t)
 
+;; EMOJI!!!
+(global-emojify-mode)
+
 ;; Turn off splash screen and mouse interface
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))

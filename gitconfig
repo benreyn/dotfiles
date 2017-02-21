@@ -15,6 +15,8 @@
   ad = add --all
   cm = commit -m
   co = checkout
-  lg = log --graph --oneline
+  gl = "!f() { git log --grep $1 -E -i; }; f"
+  ll = log --pretty=format:'%C(yellow)%h%C(reset) - %an [%C(green)%ar%C(reset)] %s'
+  sl = log --graph --oneline --decorate --all
   st = status
   sync = !git fetch upstream && git merge upstream/master

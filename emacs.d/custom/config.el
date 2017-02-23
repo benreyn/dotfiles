@@ -6,6 +6,10 @@
 ;; Theme
 (load-theme 'dracula t)
 
+;; powerline?
+(powerline-default-theme)
+(setq powerline-default-separator 'utf-8)
+
 ;; EMOJI!!!
 (global-emojify-mode)
 

@@ -60,15 +60,14 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;; Add hooks
 (add-hook 'prog-mode-hook 'electric-pair-mode)
-(add-hook 'prog-mode-hook 'auto-complete-mode)
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'js-mode-hook (lambda () (ember-mode t)))
 (add-hook 'web-mode-hook (lambda () (ember-mode t)))
-
-;; Autocomplete
-(ac-config-default)
 
 ;; Gimme my shell
 (defun set-exec-path-from-shell-PATH ()
@@ -87,9 +86,6 @@
 (require 'ember-mode)
 (add-hook 'js-mode-hook (lambda () (ember-mode t)))
 (add-hook 'web-mode-hook (lambda () (ember-mode t)))
-
-;; Autocomplete
-(ac-config-default)
 
 ;; RSpec mode
 (add-hook 'after-init-hook 'inf-ruby-switch-setup)
@@ -309,7 +305,7 @@
 (diminish-minor-mode 'projectile 'projectile-mode)
 (diminish-minor-mode 'subword 'subword-mode)
 (diminish-minor-mode 'git-gutter 'git-gutter-mode)
-(diminish-minor-mode 'auto-complete 'auto-complete-mode)
+(diminish-minor-mode 'company 'company-mode)
 (diminish-minor-mode 'autorevert 'auto-revert-mode)
 (diminish-minor-mode 'ruby-end 'ruby-end-mode)
 (diminish-minor-mode 'yasnippet 'yas-minor-mode)

@@ -309,6 +309,8 @@
 (diminish-minor-mode 'autorevert 'auto-revert-mode)
 (diminish-minor-mode 'ruby-end 'ruby-end-mode)
 (diminish-minor-mode 'yasnippet 'yas-minor-mode)
+(diminish-minor-mode 'editorconfig 'editorconfig-mode)
+(diminish-minor-mode 'flycheck 'flycheck-mode)
 
 (diminish-major-mode 'emacs-lisp-mode-hook "el")
 (diminish-major-mode 'lisp-interaction-mode-hook "λ")

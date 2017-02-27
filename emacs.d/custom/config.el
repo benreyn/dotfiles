@@ -60,8 +60,12 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
+;; robe
+(add-hook 'ruby-mode-hook 'robe-mode)
+
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
+(push 'company-robe company-backends)
 
 ;; Add hooks
 (add-hook 'prog-mode-hook 'electric-pair-mode)

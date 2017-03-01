@@ -18,7 +18,6 @@
 (depends-on "dash")
 (depends-on "dash-functional")
 (depends-on "diminish")
-(depends-on "dracula-theme")
 (depends-on "editorconfig")
 (depends-on "elixir-mode")
 (depends-on "elm-mode")

@@ -4,6 +4,7 @@
 (sensible-defaults/use-all-keybindings)
 
 ;; Theme
+(load-file "~/code/personal/dracula-emacs/dracula-theme.el")
 (load-theme 'dracula t)
 
 ;; powerline?

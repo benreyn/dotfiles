@@ -11,6 +11,7 @@ ln -s ~/.dotfiles/offlineimaprc ~/.offlineimaprc
 ln -s ~/.dotfiles/msmtprc ~/.msmtprc
 ln -s ~/.dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 ln -s ~/.dotfiles/amethyst ~/.amethyst
+ln -s ~/.dotfiles/hammerspoon ~/.hammerspoon
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

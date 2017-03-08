@@ -66,7 +66,8 @@
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
-(push 'company-robe company-backends)
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
 
 ;; Add hooks
 (add-hook 'prog-mode-hook 'electric-pair-mode)

@@ -21,6 +21,7 @@ values."
      (ruby :variables
            ruby-version-manager 'rbenv
            ruby-test-runner 'rspec)
+     ruby-on-rails
      helm
      auto-completion
      better-defaults

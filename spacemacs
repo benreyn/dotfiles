@@ -66,6 +66,7 @@ values."
    dotspacemacs-additional-packages
    '(
      dracula-theme
+     editorconfig
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -311,8 +312,15 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (add-hook 'git-commit-mode-hook 'evil-insert-state)
+  ;; editorconfig
+  (use-package editorconfig
+    :config
+    (progn
+      (spacemacs|diminish editorconfig-mode)
+      (editorconfig-mode t)))
 
+  ;; commit in insert state
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

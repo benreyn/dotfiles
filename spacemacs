@@ -142,6 +142,10 @@ you should place your code here."
 
   ;; commit in insert state
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
+
+  ;; linum mode
+  (global-linum-mode)
+  (linum-relative-toggle)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

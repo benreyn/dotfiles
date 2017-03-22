@@ -41,6 +41,7 @@ values."
    '(
      dracula-theme
      editorconfig
+     emojify
      )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
@@ -147,6 +148,9 @@ you should place your code here."
   ;; linum mode
   (global-linum-mode)
   (linum-relative-toggle)
+
+  ;; EMOJI!!
+  (global-emojify-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

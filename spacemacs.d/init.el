@@ -36,6 +36,7 @@ values."
             shell-default-position 'bottom) 
      spell-checking
      syntax-checking
+     scheme
      )
    dotspacemacs-additional-packages
    '(

@@ -65,7 +65,9 @@ values."
    dotspacemacs-startup-lists '(recents projects)
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(dracula
+   dotspacemacs-themes '(sanityinc-tomorrow-eighties
+                         sanityinc-tomorrow-night
+                         dracula
                          spacemacs-dark
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -135,6 +137,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; spaceline
+  (setq powerline-default-separator 'arrow)
 
   ;; editorconfig
   (use-package editorconfig

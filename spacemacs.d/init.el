@@ -61,7 +61,7 @@ values."
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists '(recents projects)
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode

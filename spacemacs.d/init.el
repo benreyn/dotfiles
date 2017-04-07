@@ -40,7 +40,6 @@ values."
      )
    dotspacemacs-additional-packages
    '(
-     dracula-theme
      editorconfig
      emojify
      )
@@ -67,11 +66,10 @@ values."
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(sanityinc-tomorrow-eighties
                          sanityinc-tomorrow-night
-                         dracula
                          spacemacs-dark
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Menlo"
                                :size 13
                                :weight normal
                                :width normal

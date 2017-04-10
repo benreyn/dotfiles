@@ -12,6 +12,7 @@ ln -s ~/.dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 ln -s ~/.dotfiles/amethyst ~/.amethyst
 ln -s ~/.dotfiles/hammerspoon ~/.hammerspoon
 ln -s ~/.dotfiles/spacemacs.d ~/.spacemacs.d
+ln -s ~/.dotfiles/hyper.js ~/.hyper.js
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

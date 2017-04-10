@@ -9,7 +9,8 @@ ln -s ~/.dotfiles/offlineimap ~/.offlineimap
 ln -s ~/.dotfiles/offlineimaprc ~/.offlineimaprc
 ln -s ~/.dotfiles/msmtprc ~/.msmtprc
 ln -s ~/.dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
-ln -s ~/.dotfiles/amethyst ~/.amethyst
+ln -s ~/.dotfiles/kwm ~/.kwm
+ln -s ~/.dotfiles/khdrc ~/.khdrc
 ln -s ~/.dotfiles/hammerspoon ~/.hammerspoon
 ln -s ~/.dotfiles/spacemacs.d ~/.spacemacs.d
 ln -s ~/.dotfiles/hyper.js ~/.hyper.js

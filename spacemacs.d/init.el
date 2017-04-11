@@ -34,7 +34,7 @@ values."
      emoji
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom) 
+            shell-default-position 'bottom)
      spell-checking
      syntax-checking
      scheme
@@ -109,7 +109,11 @@ values."
    dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers '(:relative t
+                               :disabled-for-modes dired-mode
+                                                   markdown-mode
+                                                   org-mode
+                               :size-limit-kb 1000)
    dotspacemacs-folding-method 'evil
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
@@ -149,10 +153,6 @@ you should place your code here."
 
   ;; commit in insert state
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
-
-  ;; linum mode
-  (global-linum-mode)
-  (linum-relative-toggle)
 
   ;; EMOJI!!
   (global-emojify-mode)

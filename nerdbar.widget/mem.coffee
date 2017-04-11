@@ -10,7 +10,7 @@ style: """
   color: #D5C4A1
   font: 14px Menlo
   font-weight: bold
-  right: 235px
+  right: 255px
   top: 6px
   span
     color: #9C9486

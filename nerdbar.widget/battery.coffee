@@ -10,6 +10,6 @@ style: """
   font: 14px Menlo
   font-weight: bold
   top: 6px
-  right: 170px
+  right: 175px
   color: #FFCC66
 """

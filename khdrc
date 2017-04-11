@@ -10,6 +10,11 @@ khd mode prefix timeout 0.75
 khd mode prefix restore default
 khd mode prefix color 0xFF458588
 
+khd mode resize prefix on
+khd mode resize timeout 0.75
+khd mode resize restore default
+khd mode resize color 0xFF458588
+
 # Activate prefix mode
 ctrl - s                 :    khd -e "mode activate prefix"
 
@@ -34,19 +39,23 @@ cmd + ctrl - d           :    kwmc space -t float
 # Rotate Window-Tree By 90degrees (Clockwise)
 cmd + ctrl - r           :    kwmc tree rotate 90
 
+# Activate prefix mode
+alt - r                 :    khd -e "mode activate resize"
+
 # Modify Container
 prefix - s               :    kwmc window -c split-mode toggle
 prefix - 0x32            :    kwmc window -c type toggle
 
-prefix - h               :    kwmc window -c expand 0.05 west
-prefix - j               :    kwmc window -c expand 0.05 south
-prefix - k               :    kwmc window -c expand 0.05 north
-prefix - l               :    kwmc window -c expand 0.05 east
+# resize mode
+resize - h               :    kwmc window -c expand 0.05 west
+resize - j               :    kwmc window -c expand 0.05 south
+resize - k               :    kwmc window -c expand 0.05 north
+resize - l               :    kwmc window -c expand 0.05 east
 
-prefix + shift - h       :    kwmc window -c reduce 0.05 west
-prefix + shift - j       :    kwmc window -c reduce 0.05 south
-prefix + shift - k       :    kwmc window -c reduce 0.05 north
-prefix + shift - l       :    kwmc window -c reduce 0.05 east
+resize + shift - h       :    kwmc window -c reduce 0.05 west
+resize + shift - j       :    kwmc window -c reduce 0.05 south
+resize + shift - k       :    kwmc window -c reduce 0.05 north
+resize + shift - l       :    kwmc window -c reduce 0.05 east
 
 # Set Temporary Window Container
 alt - f               :    kwmc window -z fullscreen

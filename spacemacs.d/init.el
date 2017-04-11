@@ -13,6 +13,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     csv
      elixir
      javascript
      lua

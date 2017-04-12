@@ -71,10 +71,10 @@ values."
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Menlo"
-                               :size 13
+                               :size 12
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-ex-command-key ":"
@@ -142,7 +142,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   ;; spaceline
-  (setq powerline-default-separator 'arrow)
+  (setq powerline-default-separator 'utf-8)
 
   ;; editorconfig
   (use-package editorconfig

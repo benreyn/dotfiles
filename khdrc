@@ -42,6 +42,13 @@ cmd + ctrl - r           :    kwmc tree rotate 90
 # Activate prefix mode
 alt - r                 :    khd -e "mode activate resize"
 
+# Vim like movement everywhere but Emacs
+lctrl - h         ![Emacs]      :   khd -p "- left"
+lctrl - j         ![Emacs]      :   khd -p "- down"
+lctrl - k         ![Emacs]      :   khd -p "- up"
+lctrl - l         ![Emacs]      :   khd -p "- right"
+
+
 # Modify Container
 prefix - s               :    kwmc window -c split-mode toggle
 prefix - 0x32            :    kwmc window -c type toggle

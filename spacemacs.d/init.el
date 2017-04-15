@@ -29,6 +29,7 @@ values."
      emacs-lisp
      colors
      git
+     github
      markdown
      org
      emoji

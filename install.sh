@@ -15,6 +15,7 @@ ln -s ~/.dotfiles/hammerspoon ~/.hammerspoon
 ln -s ~/.dotfiles/spacemacs.d ~/.spacemacs.d
 ln -s ~/.dotfiles/hyper.js ~/.hyper.js
 ln -s ~/.dotfiles/nerdbar.widget ~/Library/Application Support/Ubersicht/widgets/nerdbar.widget
+ln -s ~/.dotfiles/gnupg ~/.gnupg
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

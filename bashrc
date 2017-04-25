@@ -33,5 +33,16 @@ export PS1="$purple\u$blue \w$green\$(__git_ps1) \n$ $reset"
 # Aliases
 alias be='bundle exec'
 alias emacsc='emacsclient -tty'
+
+# asdf version manager
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+# gpg
+
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi

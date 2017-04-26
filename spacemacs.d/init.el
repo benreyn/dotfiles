@@ -25,6 +25,10 @@ values."
            ruby-test-runner 'rspec)
      ruby-on-rails
      helm
+     (mu4e :variables
+           mu4e-account-alist t
+           mu4e-enable-notifications t
+           mu4e-enable-mode-line t)
      auto-completion
      better-defaults
      emacs-lisp
@@ -158,6 +162,48 @@ you should place your code here."
 
   ;; EMOJI!!
   (global-emojify-mode)
+
+  ;; mu4e
+  (with-eval-after-load 'mu4e-alert
+    (mu4e-alert-set-default-style 'notifier)
+    (setq mu4e-alert-interesting-mail-query
+      (concat
+        "flag:unread maildir:\"/personal/INBOX\" "
+        "OR "
+        "flag:unread maildir:\"/work/INBOX\""
+      )))
+
+  (setq mu4e-account-alist
+        '(("personal"
+           (user-mail-address "breyno127@gmail.com")
+           (user-full-name "Benjamin Reynolds")
+           (mu4e-sent-folder "/personal/sent")
+           (mu4e-trash-folder "/personal/trash")
+           (mu4e-drafts-folder "/personal/drafts")
+           (mu4e-refile-folder "/personal/archive"))
+          ("work"
+           (user-mail-address "ben@zaarly.com")
+           (user-full-name "Benjamin Reynolds")
+           (mu4e-sent-folder "/work/sent")
+           (mu4e-trash-folder "/work/trash")
+           (mu4e-drafts-folder "/work/drafts")
+           (mu4e-refile-folder "/work/archive"))))
+  (mu4e/mail-account-reset)
+
+  (setq mu4e-maildir "~/mail"
+        mu4e-get-mail-command "offlineimap"
+        mu4e-update-interval 180
+        mu4e-compose-signature-auto-include nil
+        mu4e-sent-messages-behavior 'sent
+        mu4e-view-show-images t
+        mu4e-view-show-addresses t)
+
+  (setq mu4e-maildir-shortcuts
+        '(("/personal/INBOX" . ?p)
+          ("/work/INBOX"     . ?w)))
+
+  (setq message-send-mail-function 'message-send-mail-with-sendmail)
+  (setq sendmail-program "/usr/local/bin/msmtp")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

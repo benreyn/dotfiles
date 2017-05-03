@@ -170,8 +170,14 @@ you should place your code here."
       (concat
         "flag:unread maildir:\"/personal/INBOX\" "
         "OR "
-        "flag:unread maildir:\"/work/INBOX\""
-      )))
+        "flag:unread maildir:\"/work/INBOX\"")))
+
+  ;; alert
+  (with-eval-after-load 'alert
+    (setq alert-notifier-default-icon
+          (expand-file-name
+          (concat user-emacs-directory "core/banners/img/spacemacs.png"))))
+
 
   (setq mu4e-account-alist
         '(("personal"

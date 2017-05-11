@@ -37,10 +37,10 @@ e.g: window-rules in a separate file called 'rules'
 */
 
 # Set default values for screen padding
-kwmc config padding 24 4 4 4
+kwmc config padding 28 8 8 8
 
 # Set default values for container gaps
-kwmc config gap 2 2
+kwmc config gap 8 8
 
 # Default tiling mode for Kwm (bsp | monocle | float)
 kwmc config tiling bsp

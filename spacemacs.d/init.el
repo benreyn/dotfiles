@@ -13,38 +13,39 @@ values."
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     sql
-     python
+     auto-completion
+     better-defaults
+     colors
      csv
      elixir
+     emacs-lisp
+     emoji
+     git
+     github
+     helm
+     html
      javascript
      lua
-     yaml
-     html
-     (ruby :variables
-           ruby-version-manager 'rbenv
-           ruby-test-runner 'rspec)
+     markdown
+     org
+     python
      ruby-on-rails
-     helm
+     scheme
+     spell-checking
+     sql
+     syntax-checking
+     yaml
+
      (mu4e :variables
            mu4e-account-alist t
            mu4e-enable-notifications t
            mu4e-enable-mode-line t)
-     auto-completion
-     better-defaults
-     emacs-lisp
-     colors
-     git
-     github
-     markdown
-     org
-     emoji
+     (ruby :variables
+           ruby-version-manager 'rbenv
+           ruby-test-runner 'rspec)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
-     scheme
      )
    dotspacemacs-additional-packages
    '(

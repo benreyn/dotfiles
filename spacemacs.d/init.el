@@ -211,6 +211,14 @@ you should place your code here."
 
   (setq message-send-mail-function 'message-send-mail-with-sendmail)
   (setq sendmail-program "/usr/local/bin/msmtp")
+
+  (spacemacs|define-custom-layout "@Dev"
+    :binding "d")
+  (spacemacs|define-custom-layout "@Terminals"
+    :binding "t"
+    :body
+    (progn
+      (call-interactively 'multi-term)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

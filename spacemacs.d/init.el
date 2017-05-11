@@ -13,6 +13,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     sql
      python
      csv
      elixir

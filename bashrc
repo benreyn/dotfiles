@@ -1,5 +1,8 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+# setup cdpath
+export CDPATH=.:$HOME/code/personal:$HOME/code/work
+
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 

@@ -180,6 +180,8 @@ you should place your code here."
           (expand-file-name
           (concat user-emacs-directory "core/banners/img/spacemacs.png"))))
 
+  ;; write custom-set-variables to a location I dont care about
+  (setq custom-file (concat configuration-layer-private-directory "custom.el"))
 
   (setq mu4e-account-alist
         '(("personal"

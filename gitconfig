@@ -15,6 +15,7 @@
   ad = add --all
   cm = commit -m
   co = checkout
+  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   gl = "!f() { git log --grep $1 -E -i; }; f"
   ll = log --pretty=format:'%C(yellow)%h%C(reset) - %an [%C(green)%ar%C(reset)] %s'
   sl = log --graph --oneline --decorate --all

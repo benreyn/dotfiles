@@ -21,7 +21,6 @@ values."
      emacs-lisp
      emoji
      git
-     github
      helm
      html
      javascript

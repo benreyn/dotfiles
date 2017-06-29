@@ -34,6 +34,7 @@ values."
      spell-checking
      sql
      syntax-checking
+     vimscript
      yaml
 
      (mu4e :variables

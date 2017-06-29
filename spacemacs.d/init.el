@@ -17,6 +17,7 @@ values."
      better-defaults
      colors
      csv
+     dash
      elixir
      emacs-lisp
      emoji

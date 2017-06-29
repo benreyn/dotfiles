@@ -120,6 +120,7 @@ blacklists an application from Kwms tiling
     kwmc rule owner="Skitch" properties={float="true"}
 */
 kwmc rule owner="Skitch" properties={float="true"}
+kwmc rule owner="Dash" properties={float="true"}
 
 /*
 The following command creates a rule that

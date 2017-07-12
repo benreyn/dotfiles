@@ -34,6 +34,7 @@ values."
      scheme
      spell-checking
      sql
+     swift
      syntax-checking
      vimscript
      yaml

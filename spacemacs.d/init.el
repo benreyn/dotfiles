@@ -28,6 +28,7 @@ values."
      lua
      markdown
      org
+     pass
      python
      ruby-on-rails
      scheme

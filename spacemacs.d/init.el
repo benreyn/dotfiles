@@ -32,6 +32,7 @@ values."
      python
      ruby-on-rails
      scheme
+     slack
      spell-checking
      sql
      swift
@@ -237,6 +238,20 @@ you should place your code here."
   ;; write custom-set-variables to a location I dont care about
   (setq custom-file (concat configuration-layer-private-directory "custom.el"))
 
+  (slack-register-team
+   :name "Zaarly"
+   :default t
+   :client-id (password-store-get "slack/work/client-id")
+   :client-secret (password-store-get "slack/work/client-secret")
+   :token (password-store-get "slack/work/token")
+   :display-profile-image t
+   :modeline-enabled t
+   :modeline-name "Z"
+   :subscribed-channels '(general
+                          dev
+                          qa
+                          random
+                          kc))
 
   (spacemacs|define-custom-layout "@Dev"
     :binding "d")

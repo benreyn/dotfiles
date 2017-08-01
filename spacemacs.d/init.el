@@ -31,6 +31,7 @@ values."
      pass
      python
      ruby-on-rails
+     rust
      scheme
      slack
      spell-checking

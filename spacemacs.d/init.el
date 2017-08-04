@@ -3,9 +3,8 @@
 ;; Author: Benjamin Reynolds
 
 (defun dotspacemacs/layers ()
-  "Configuration Layers declaration.
-You should not put any user code in this function besides modifying the variable
-values."
+  "Layer configuration:
+This function should only modify configuration layer settings."
   (setq-default
    dotspacemacs-distribution 'spacemacs
    dotspacemacs-enable-lazy-installation 'unused
@@ -61,11 +60,10 @@ values."
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
-  "Initialization function.
-This function is called at the very startup of Spacemacs initialization
-before layers configuration.
-You should not put any user code in there besides modifying the variable
-values."
+  "Initialization:
+This function is called at the very beginning of Spacemacs startup,
+before layer configuration.
+It should only modify the values of Spacemacs settings."
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
@@ -74,7 +72,8 @@ values."
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner nil
-   dotspacemacs-startup-lists '(recents projects)
+   dotspacemacs-startup-lists '((recents . nil)
+                                (projects . nil))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(sanityinc-tomorrow-eighties
@@ -101,6 +100,7 @@ values."
    dotspacemacs-default-layout-name "Default"
    dotspacemacs-display-default-layout nil
    dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-generate-layout-names nil
    dotspacemacs-large-file-size 1
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-max-rollback-slots 5
@@ -111,6 +111,7 @@ values."
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
+   dotspacemacs-switch-to-buffer-prefers-purpose nil
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
@@ -131,27 +132,29 @@ values."
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
+   dotspacemacs-frame-title-format "%I@%S"
+   dotspacemacs-icon-title-format nil
    dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-zone-out-when-idle nil
+   dotspacemacs-pretty-docs nil
    ))
 
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
-executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them in
-`dotspacemacs/user-config' first."
+  "Initialization for user code:
+This function is called immediately after `dotspacemacs/init', before layer
+configuration.
+It is mostly for variables that should be set before packages are loaded.
+If you are unsure, try setting them in `dotspacemacs/user-config' first."
   )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration.
+Put your configuration code here, except for variables that should be set
+before packages are loaded."
 
   ;; spaceline
   (setq powerline-default-separator 'utf-8)

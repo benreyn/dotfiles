@@ -20,6 +20,7 @@ This function should only modify configuration layer settings."
      elixir
      emacs-lisp
      emoji
+     ess
      git
      helm
      html

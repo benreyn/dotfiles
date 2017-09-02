@@ -140,7 +140,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-default-package-repository nil
    dotspacemacs-frame-title-format "%I@%S"
    dotspacemacs-icon-title-format nil
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'trailing
    dotspacemacs-zone-out-when-idle nil
    dotspacemacs-pretty-docs nil
    ))

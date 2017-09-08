@@ -246,20 +246,31 @@ before packages are loaded."
   ;; write custom-set-variables to a location I dont care about
   (setq custom-file (concat configuration-layer-private-directory "custom.el"))
 
-  (slack-register-team
-   :name "Zaarly"
-   :default t
-   :client-id (password-store-get "slack/work/client-id")
-   :client-secret (password-store-get "slack/work/client-secret")
-   :token (password-store-get "slack/work/token")
-   :display-profile-image t
-   :modeline-enabled t
-   :modeline-name "Z"
-   :subscribed-channels '(general
-                          dev
-                          qa
-                          random
-                          kc))
+  (with-eval-after-load 'slack
+    (slack-register-team
+     :name "kcruby"
+     :client-id (password-store-get "slack/kcruby/client-id")
+     :client-secret (password-store-get "slack/kcruby/client-secret")
+     :token (password-store-get "slack/kcruby/token")
+     :display-profile-image t
+     :modeline-enabled t
+     :modeline-name "KC"
+     :subscribed-channels '(general))
+
+    (slack-register-team
+    :name "Zaarly"
+    :default t
+    :client-id (password-store-get "slack/work/client-id")
+    :client-secret (password-store-get "slack/work/client-secret")
+    :token (password-store-get "slack/work/token")
+    :display-profile-image t
+    :modeline-enabled t
+    :modeline-name "Z"
+    :subscribed-channels '(general
+                            dev
+                            qa
+                            random
+                            kc)))
 
   (spacemacs|define-custom-layout "@Dev"
     :binding "d")

@@ -255,7 +255,9 @@ before packages are loaded."
      :display-profile-image t
      :modeline-enabled t
      :modeline-name "KC"
-     :subscribed-channels '(general))
+     :subscribed-channels '(general
+                            lunch-meetups
+                            website))
 
     (slack-register-team
     :name "Zaarly"

@@ -17,6 +17,7 @@ ln -s ~/.dotfiles/hyper.js ~/.hyper.js
 ln -s ~/.dotfiles/nerdbar.widget ~/Library/Application Support/Ubersicht/widgets/nerdbar.widget
 ln -s ~/.dotfiles/gnupg ~/.gnupg
 ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/rbenv/default-gems ~/.rbenv/default-gems
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

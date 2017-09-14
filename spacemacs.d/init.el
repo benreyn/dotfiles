@@ -160,6 +160,9 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  ;; multiple cursors are fun
+  (global-evil-mc-mode)
+
   ;; spaceline
   (setq powerline-default-separator 'utf-8)
 

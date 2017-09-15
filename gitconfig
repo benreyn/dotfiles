@@ -11,6 +11,8 @@
     ui = true
 [push]
     default = simple
+[url "git@github.com:"]
+  insteadOf = gh:
 [alias]
   ad = add --all
   cm = commit -m

@@ -24,8 +24,8 @@ shift + alt - e          :    kwmc quit
 # Restart Kwm
 shift + alt - r          :    brew services restart kwm
 
-# Launch Hyper
-alt - return             :    open -na /Applications/Hyper.app
+# Launch Alacritty
+alt - return             :    open -na /Applications/Alacritty.app
 
 # Set Space Tiling Mode To BSP
 cmd + ctrl - a           :    kwmc space -t bsp

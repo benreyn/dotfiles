@@ -13,7 +13,6 @@ ln -s ~/.dotfiles/kwm ~/.kwm
 ln -s ~/.dotfiles/khdrc ~/.khdrc
 ln -s ~/.dotfiles/hammerspoon ~/.hammerspoon
 ln -s ~/.dotfiles/spacemacs.d ~/.spacemacs.d
-ln -s ~/.dotfiles/hyper.js ~/.hyper.js
 ln -s ~/.dotfiles/nerdbar.widget ~/Library/Application Support/Ubersicht/widgets/nerdbar.widget
 ln -s ~/.dotfiles/gnupg ~/.gnupg
 ln -s ~/.dotfiles/vimrc ~/.vimrc

@@ -72,7 +72,9 @@ It should only modify the values of Spacemacs settings."
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
+   dotspacemacs-use-spacelpa nil
    dotspacemacs-check-for-update nil
+   dotspacemacs-verify-spacelpa-archives nil
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil

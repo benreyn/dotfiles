@@ -55,3 +55,5 @@ fi
 blowport() {
     lsof -ti tcp:$1 | xargs kill
 }
+
+export PATH="$HOME/.cargo/bin:$PATH"

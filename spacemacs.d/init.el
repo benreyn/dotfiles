@@ -27,6 +27,7 @@ This function should only modify configuration layer settings."
      javascript
      lua
      markdown
+     nand2tetris
      org
      pass
      python

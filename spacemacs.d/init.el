@@ -263,6 +263,11 @@ before packages are loaded."
     :body
     (progn
       (call-interactively 'multi-term)))
+
+  ;; Lower gc-threshold:
+  ;; Spacemacs raises this in its init.el to improve startup time and setting it
+  ;; back to reasonable place should improve performance during regular use.
+  (setq gc-cons-threshold 10000000)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

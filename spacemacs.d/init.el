@@ -28,7 +28,6 @@ This function should only modify configuration layer settings."
      lua
      markdown
      nand2tetris
-     org
      pass
      python
      ruby-on-rails
@@ -43,6 +42,8 @@ This function should only modify configuration layer settings."
      (mu4e :variables
            mu4e-enable-notifications t
            mu4e-enable-mode-line t)
+     (org :variables
+          org-enable-org-journal-support t)
      (ruby :variables
            ruby-version-manager 'rbenv
            ruby-test-runner 'rspec)
@@ -62,6 +63,7 @@ This function should only modify configuration layer settings."
    '(
      editorconfig
      emojify
+     org-habit
      )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
@@ -189,6 +191,11 @@ before packages are loaded."
   ;; EMOJI!!
   (global-emojify-mode)
 
+  ;; org
+  (setq org-journal-dir "~/org")
+
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "|" "DONE(d!)")))
 
   ;; alert
   (with-eval-after-load 'alert

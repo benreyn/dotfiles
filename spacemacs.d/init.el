@@ -63,7 +63,6 @@ This function should only modify configuration layer settings."
    '(
      editorconfig
      emojify
-     org-habit
      )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
@@ -193,6 +192,9 @@ before packages are loaded."
 
   ;; org
   (setq org-journal-dir "~/org")
+  (setq org-agenda-files '("~/org"))
+  (setq org-journal-file-format "%Y-%m-%d.org")
+  (setq org-journal-date-prefix "#+TITLE: ")
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "|" "DONE(d!)")))

@@ -162,6 +162,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                                             ("org" . "orgmode.org/elpa/")
                                             ("gnu" . "elpa.gnu.org/packages/")))
 
+  ;; write dotspacemacs/emacs-custom-settings to a location
+  ;; I dont care about and load it
+  (setq custom-file (concat configuration-layer-private-directory "custom.el"))
+  (load-file custom-file)
   )
 
 (defun dotspacemacs/user-config ()
@@ -205,8 +209,6 @@ before packages are loaded."
           (expand-file-name
           (concat user-emacs-directory "core/banners/img/spacemacs.png"))))
 
-  ;; write custom-set-variables to a location I dont care about
-  (setq custom-file (concat configuration-layer-private-directory "custom.el"))
 
   (spacemacs|define-custom-layout "@Dev"
     :binding "d")

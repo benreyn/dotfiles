@@ -29,6 +29,7 @@ This function should only modify configuration layer settings."
      markdown
      nand2tetris
      pass
+     prodigy
      python
      ruby-on-rails
      rust
@@ -209,6 +210,12 @@ before packages are loaded."
           (expand-file-name
           (concat user-emacs-directory "core/banners/img/spacemacs.png"))))
 
+  ;; Prodigy
+  (prodigy-define-service
+    :name "Foreman"
+    :command "foreman"
+    :args '("start")
+    :cwd "~/code/work/zweb/")
 
   (spacemacs|define-custom-layout "@Dev"
     :binding "d")

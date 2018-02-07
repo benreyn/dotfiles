@@ -14,6 +14,7 @@ This function should only modify configuration layer settings."
    '(
      auto-completion
      better-defaults
+     calendar
      colors
      csv
      dash
@@ -209,6 +210,12 @@ before packages are loaded."
     (setq alert-notifier-default-icon
           (expand-file-name
           (concat user-emacs-directory "core/banners/img/spacemacs.png"))))
+
+  ;; Gcal
+  (setq org-gcal-client-id (password-store-get "gcal/work/client-id")
+        org-gcal-client-secret (password-store-get "gcal/work/client-secret"))
+
+  (setq org-gcal-file-alist '(("ben@zaarly.com" . "~/org/ben-work.org")))
 
   ;; Prodigy
   (prodigy-define-service

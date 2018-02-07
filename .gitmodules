@@ -1,0 +1,3 @@
+[submodule "spacemacs.d/layers/calendar"]
+	path = spacemacs.d/layers/calendar
+	url = git@github.com:benreyn/google-calendar-layer.git

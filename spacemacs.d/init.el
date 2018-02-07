@@ -32,6 +32,7 @@ This function should only modify configuration layer settings."
      pass
      prodigy
      python
+     react
      ruby-on-rails
      rust
      scheme
@@ -179,6 +180,14 @@ before packages are loaded."
 
   ;; multiple cursors are fun
   (global-evil-mc-mode)
+
+  ;; JS indent
+  (setq-default js2-basic-offset 2
+                css-indent-offset 2
+                web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                web-mode-code-indent-offset 2
+                web-mode-attr-indent-offset 2)
 
   ;; spaceline
   (setq powerline-default-separator 'utf-8)

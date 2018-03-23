@@ -16,6 +16,11 @@ if which rbenv > /dev/null; then
     eval "$(rbenv init -)"
 fi
 
+# Setup pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
+
 # Cask
 export PATH=$HOME/.cask/bin:$PATH
 

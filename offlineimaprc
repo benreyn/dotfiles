@@ -5,7 +5,6 @@ pythonfile = ~/.offlineimap/config.py
 [Account personal]
 localrepository = personal-local
 remoterepository = personal-remote
-status_backend = sqlite
 
 [Repository personal-local]
 type = Maildir
@@ -19,8 +18,11 @@ keepalive = 60
 maxconnections = 3
 realdelete = no
 remoteuser = breyno127@gmail.com
-remotepasseval = find_password("mail/personal")
-auth_mechanisms = PLAIN
+auth_mechanisms = XOAUTH2
+oauth2_client_id = find_password("mail/client_id")
+oauth2_client_secret = find_password("mail/client_secret")
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+oauth2_refresh_token = find_password("mail/personal")
 folderfilter = should_include_folder
 nametrans = gmail_folder_to_local_folder
 sslcacertfile = /usr/local/etc/openssl/cert.pem
@@ -28,7 +30,6 @@ sslcacertfile = /usr/local/etc/openssl/cert.pem
 [Account work]
 localrepository = work-local
 remoterepository = work-remote
-status_backend = sqlite
 
 [Repository work-local]
 type = Maildir
@@ -42,8 +43,11 @@ keepalive = 60
 maxconnections = 3
 realdelete = no
 remoteuser = ben@zaarly.com
-remotepasseval = find_password("mail/work")
+auth_mechanisms = XOAUTH2
+oauth2_client_id = find_password("mail/client_id")
+oauth2_client_secret = find_password("mail/client_secret")
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+oauth2_refresh_token = find_password("mail/work")
 folderfilter = should_include_folder
 nametrans = gmail_folder_to_local_folder
-auth_mechanisms = PLAIN
 sslcacertfile = /usr/local/etc/openssl/cert.pem

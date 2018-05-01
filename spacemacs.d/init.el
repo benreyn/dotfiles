@@ -25,7 +25,6 @@ This function should only modify configuration layer settings."
      git
      helm
      html
-     javascript
      lua
      markdown
      nand2tetris
@@ -42,6 +41,8 @@ This function should only modify configuration layer settings."
      vimscript
      yaml
 
+     (javascript :variables
+                 js-indent-level 2)
      (mu4e :variables
            mu4e-enable-notifications t
            mu4e-enable-mode-line t)

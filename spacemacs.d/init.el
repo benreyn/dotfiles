@@ -19,6 +19,7 @@ This function should only modify configuration layer settings."
      csv
      dash
      elixir
+     elm
      emacs-lisp
      emoji
      ess

@@ -1,6 +1,23 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
+
+(def-package-hook! helm
+  :pre-init
+  (setq helm-quick-update t
+        helm-mode-fuzzy-match t
+        helm-buffers-fuzzy-matching t
+        helm-apropos-fuzzy-match t
+        helm-M-x-fuzzy-match t
+        helm-recentf-fuzzy-match t
+        helm-projectile-fuzzy-match t
+        helm-display-header-line nil
+        helm-ff-auto-update-initial-value nil
+        helm-find-files-doc-header nil
+        helm-mode-handle-completion-in-region nil
+        helm-candidate-number-limit 100
+        helm-move-to-line-cycle-in-source t) nil)
+
 (doom! :feature
       ;debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
@@ -20,9 +37,9 @@
        (company          ; the ultimate code completion backend
         +auto            ; as-you-type code completion
         +childframe)     ; a nicer company UI. Emacs +26 only!
-      ;helm              ; the *other* search engine for love and life
+       helm              ; the *other* search engine for love and life
       ;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+      ;ivy               ; a search engine for love and life
 
        :ui
        doom              ; what makes DOOM look the way it does

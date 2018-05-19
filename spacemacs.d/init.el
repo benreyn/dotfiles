@@ -23,6 +23,7 @@ This function should only modify configuration layer settings."
      elm
      emacs-lisp
      emoji
+     erc
      ess
      git
      helm

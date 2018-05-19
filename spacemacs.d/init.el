@@ -15,6 +15,7 @@ This function should only modify configuration layer settings."
      auto-completion
      better-defaults
      calendar
+     coffeescript
      colors
      csv
      dash

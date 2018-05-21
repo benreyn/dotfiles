@@ -223,6 +223,19 @@ before packages are loaded."
     (setq alert-notifier-default-icon
           (expand-file-name
           (concat user-emacs-directory "core/banners/img/spacemacs.png"))))
+  ;; Erc
+
+  (setq erc-server-list
+        `(("irc.freenode.net"
+           :port "6697"
+           :ssl t
+           :nick "benreyn"
+           :password ,(password-store-get "irc/freenode.net"))
+          ("irc.mozilla.org"
+           :port "6697"
+           :ssl t
+           :nick "benreyn"
+           :password ,(password-store-get "irc/mozilla.org"))))
 
   ;; Gcal
   (setq org-gcal-client-id (password-store-get "gcal/work/client-id")

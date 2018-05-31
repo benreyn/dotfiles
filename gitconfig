@@ -23,3 +23,5 @@
   sl = log --graph --oneline --decorate --all
   st = status
   sync = !git fetch upstream && git merge upstream/master
+[github]
+	user = benreyn

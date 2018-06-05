@@ -11,7 +11,12 @@
           :desc "Find file in project" :n "f" #'projectile-find-file)
 
         (:desc "git" :prefix "g"
-          :desc "Magit status" :n "s" #'magit-status)))
+          :desc "Magit status" :n "s" #'magit-status)
+
+        (:desc "window" :prefix "w"
+          :desc "Delete other windows" :n "m" #'delete-other-windows)))
+
+(add-hook 'ruby-mode-hook #'rspec-verifiable-mode)
 
 (provide 'config)
 ;;; config.el ends here

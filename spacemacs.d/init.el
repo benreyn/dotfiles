@@ -262,6 +262,11 @@ before packages are loaded."
   ;; Spacemacs raises this in its init.el to improve startup time and setting it
   ;; back to reasonable place should improve performance during regular use.
   (setq gc-cons-threshold 10000000)
+
+  ;; Emacs > 26 does not provide an option for compiling with transparent or
+  ;; Natural title bars in macOS. This will mimic a natural title bar
+  (add-to-list 'default-frame-alist
+               '(ns-transparent-titlebar . t))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

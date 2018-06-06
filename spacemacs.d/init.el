@@ -19,7 +19,6 @@ This function should only modify configuration layer settings."
      colors
      csv
      dash
-     elixir
      elm
      emacs-lisp
      emoji
@@ -40,7 +39,6 @@ This function should only modify configuration layer settings."
      scheme
      spell-checking
      sql
-     swift
      vimscript
      yaml
 

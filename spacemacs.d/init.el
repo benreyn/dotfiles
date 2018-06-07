@@ -68,6 +68,7 @@ This function should only modify configuration layer settings."
    '(
      editorconfig
      emojify
+     doom-themes
      )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
@@ -92,7 +93,8 @@ It should only modify the values of Spacemacs settings."
                                 (projects . nil))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(sanityinc-tomorrow-eighties
+   dotspacemacs-themes '(doom-one
+                         sanityinc-tomorrow-eighties
                          sanityinc-tomorrow-night
                          spacemacs-dark
                          spacemacs-light)

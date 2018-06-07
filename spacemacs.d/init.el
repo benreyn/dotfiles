@@ -19,7 +19,6 @@ This function should only modify configuration layer settings."
      colors
      csv
      dash
-     elm
      emacs-lisp
      emoji
      erc
@@ -42,6 +41,11 @@ This function should only modify configuration layer settings."
      vimscript
      yaml
 
+     (elm :variables
+          elm-sort-imports-on-save t
+          elm-format-on-save t
+          elm-format-command "elm-format-0.18"
+          )
      (javascript :variables
                  js-indent-level 2)
      (mu4e :variables

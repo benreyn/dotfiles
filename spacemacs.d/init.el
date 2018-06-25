@@ -44,8 +44,7 @@ This function should only modify configuration layer settings."
      (elm :variables
           elm-sort-imports-on-save t
           elm-format-on-save t
-          elm-format-command "elm-format-0.18"
-          )
+          elm-format-command "elm-format-0.18")
      (javascript :variables
                  js-indent-level 2)
      (mu4e :variables
@@ -84,31 +83,35 @@ This function is called at the very beginning of Spacemacs startup,
 before layer configuration.
 It should only modify the values of Spacemacs settings."
   (setq-default
+   dotspacemacs-enable-emacs-pdumper nil
+   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
    dotspacemacs-gc-cons '(100000000 0.1)
    dotspacemacs-use-spacelpa nil
-   dotspacemacs-check-for-update nil
    dotspacemacs-verify-spacelpa-archives nil
-   dotspacemacs-elpa-subdirectory nil
+   dotspacemacs-check-for-update nil
+   dotspacemacs-elpa-subdirectory 'emacs-version
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner nil
    dotspacemacs-startup-lists '((recents . nil)
                                 (projects . nil))
    dotspacemacs-startup-buffer-responsive t
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'lisp-interaction-mode
+   dotspacemacs-initial-scratch-message nil
    dotspacemacs-themes '(doom-one
                          sanityinc-tomorrow-eighties
                          sanityinc-tomorrow-night
                          spacemacs-dark
                          spacemacs-light)
+   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Menlo"
                                :size 14
                                :weight normal
-                               :width normal
-                               :powerline-scale 1.0)
+                               :width normal)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-ex-command-key ":"
@@ -127,10 +130,6 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-large-file-size 1
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-max-rollback-slots 5
-   dotspacemacs-helm-resize nil
-   dotspacemacs-helm-no-header nil
-   dotspacemacs-helm-position 'bottom
-   dotspacemacs-helm-use-fuzzy 'always
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
@@ -138,12 +137,12 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    dotspacemacs-active-transparency 90
    dotspacemacs-inactive-transparency 90
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
-   dotspacemacs-mode-line-unicode-symbols nil
+   dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers '(:relative t
                                :disabled-for-modes dired-mode
@@ -154,6 +153,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-enable-server nil
+   dotspacemacs-server-socket-dir nil
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
@@ -176,7 +177,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   ;; write dotspacemacs/emacs-custom-settings to a location
   ;; I dont care about and load it
-  (setq custom-file (concat configuration-layer-private-directory "custom.el"))
+  (setq custom-file (concat configuration-layer-private-layer-directory "custom.el"))
   (load-file custom-file)
   )
 

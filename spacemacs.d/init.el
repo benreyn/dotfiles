@@ -86,6 +86,7 @@ It should only modify the values of Spacemacs settings."
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
+   dotspacemacs-gc-cons '(100000000 0.1)
    dotspacemacs-use-spacelpa nil
    dotspacemacs-check-for-update nil
    dotspacemacs-verify-spacelpa-archives nil
@@ -261,11 +262,6 @@ before packages are loaded."
     :body
     (progn
       (call-interactively 'multi-term)))
-
-  ;; Lower gc-threshold:
-  ;; Spacemacs raises this in its init.el to improve startup time and setting it
-  ;; back to reasonable place should improve performance during regular use.
-  (setq gc-cons-threshold 10000000)
 
   ;; Emacs > 26 does not provide an option for compiling with transparent or
   ;; Natural title bars in macOS. This will mimic a natural title bar

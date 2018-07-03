@@ -165,6 +165,9 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-pretty-docs nil
    ))
 
+(defun dotspacemacs/user-env ()
+  (spacemacs/load-spacemacs-env))
+
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer

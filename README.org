@@ -1,1 +1,1 @@
-BenReyn's new emacs config
+My emacs config

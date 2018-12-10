@@ -11,12 +11,13 @@ This function should only modify configuration layer settings."
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
-   '(
+   '(erlang
      auto-completion
      better-defaults
      ;; calendar
      coffeescript
      colors
+     crystal
      csv
      dash
      emacs-lisp
@@ -28,13 +29,12 @@ This function should only modify configuration layer settings."
      html
      lua
      markdown
-     nand2tetris
+     ;; nand2tetris
      pass
      prodigy
      python
      react
      ruby-on-rails
-     rust
      scheme
      spell-checking
      sql
@@ -44,7 +44,12 @@ This function should only modify configuration layer settings."
      (elm :variables
           elm-sort-imports-on-save t
           elm-format-on-save t
-          elm-format-command "elm-format-0.18")
+          elm-format-command "elm-format"
+          elm-reactor-arguments '("--port" "8000")
+          elm-interactive-command '("elm" "repl")
+          elm-reactor-command '("elm" "reactor")
+          elm-compile-command '("elm" "make")
+          elm-package-command '("elm" "package"))
      (javascript :variables
                  js-indent-level 2)
      (mu4e :variables
@@ -55,6 +60,8 @@ This function should only modify configuration layer settings."
      (ruby :variables
            ruby-version-manager 'rbenv
            ruby-test-runner 'rspec)
+     (rust :variables
+           rust-format-on-save t)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -106,7 +113,7 @@ It should only modify the values of Spacemacs settings."
                          sanityinc-tomorrow-night
                          spacemacs-dark
                          spacemacs-light)
-   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom :separator arrow :separator-scale 1.5)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Menlo"
                                :size 14

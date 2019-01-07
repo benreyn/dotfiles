@@ -33,8 +33,7 @@
  make-backup-files         nil
  auto-save-list-file-name  nil
  auto-save-default         nil
- inhibit-startup-message   t
- visible-bell              t)
+ inhibit-startup-message   t)
 
 ;; save custom file somewhere else
 (setq custom-file

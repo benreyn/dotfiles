@@ -33,7 +33,46 @@
  make-backup-files         nil
  auto-save-list-file-name  nil
  auto-save-default         nil
- inhibit-startup-message   t)
+ inhibit-startup-message   t
+ visible-bell              nil)
+
+(setq ring-bell-function
+      (lambda ()
+        (invert-face 'mode-line)
+        (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+
+;; Load theme
+(use-package color-theme-sanityinc-tomorrow
+  :config (load-theme 'sanityinc-tomorrow-eighties t))
+
+;; Load evil
+(use-package evil
+  :init
+  (use-package linum-relative)
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode t))
+  :config
+  (evil-mode t))
+
+;; which-key for browsing keybindings
+(use-package which-key
+  :init (which-key-mode))
+
+;; general.el for keybinding
+(use-package general
+  :config
+  (general-evil-setup t))
+
+;; magit
+(use-package magit
+  :init
+  (use-package evil-magit)
+  :general
+  (general-nmap
+   :prefix "SPC"
+   "g"  '(:ignore t :which-key "Git")
+   "gs" '(magit-status :which-key "git status")))
 
 ;; save custom file somewhere else
 (setq custom-file

@@ -1,15 +1,16 @@
-;;; emacs --- Ben's configuration -*- mode: emacs-lisp; -*-
-;; Author: Benjamin Reynolds
-
-;; URL: https://github.com/beneryn/.emacs.d
-
+;;; init.el --- benreyn's configuration -*- lexical-binding: t -*-
 ;;; Commentary:
+
+;; Bootstrap and load my emacs configuration
 
 ;;; Code:
 
-(package-initialize)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(setq gc-cons-threshold most-positive-fixnum)
+(require 'init-startup-optimizations)
+(require 'init-package-management)
+
+(package-initialize)
 
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)

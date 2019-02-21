@@ -1,8 +1,8 @@
 ;;; init-startup-optimizations.el --- Optimize startup time -*- lexical-binding: t -*-
 ;;; Commentary:
 
-;; Increase garbage collection threshold's for the duration of emacs startup
-;; and
+;; Increase garbage collection threshold's and unset file-name-handler-alist
+;; for the duration of emacs startup. Resets defaults after startup is complete
 
 ;;; Code:
 
@@ -17,7 +17,7 @@
  gc-cons-threshold       benreyn/startup-gc-cons-threshold)
 
 
-(defun benreyn/restore-startup-optimizations
+(defun benreyn/restore-startup-optimizations ()
     (setq
      file-name-handler-alist benreyn/original-file-name-handler-alist
      gc-cons-threshold       benreyn/original-gc-cons-threshold))

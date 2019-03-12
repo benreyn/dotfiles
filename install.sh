@@ -19,6 +19,7 @@ ln -s ~/.dotfiles/nerdbar.widget ~/Library/Application Support/Ubersicht/widgets
 ln -s ~/.dotfiles/gnupg ~/.gnupg
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/rbenv/default-gems ~/.rbenv/default-gems
+ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 
 # Link .bash_profile -> .bashrc
 rm -f ~/.bash_profile

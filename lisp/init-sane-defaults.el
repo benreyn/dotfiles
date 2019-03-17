@@ -11,6 +11,8 @@
 
 (tool-bar-mode -1)
 
+(add-hook 'prog-mode-hook #'linum-relative-mode)
+
 (add-to-list 'default-frame-alist
 	     '(ns-transparent-titlebar . t))
 

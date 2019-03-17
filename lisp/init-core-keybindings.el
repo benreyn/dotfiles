@@ -6,7 +6,8 @@
 ;;; Code:
 
 (general-define-key
- :states 'normal
+ :keymaps 'override
+ :states '(normal visual motion)
  :prefix "SPC"
  "w"  '(:ignore t :which-key "Windows")
  "wV" 'split-window-right
@@ -14,6 +15,7 @@
  "wj" 'evil-window-down
  "wh" 'evil-window-left
  "wl" 'evil-window-right
+ "wo" 'delete-other-windows
  "wd" 'delete-window
  "b"  '(:ignore t :which-key "Buffers")
  "bd" 'kill-this-buffer)

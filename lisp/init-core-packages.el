@@ -29,5 +29,17 @@
   :init
   (projectile-mode t))
 
+(use-package smartparens
+  :init
+  (require 'smartparens-config)
+  (add-hook 'prog-mode-hook #'smartparens-mode))
+
+(use-package doom-modeline
+  :init
+  (setq doom-modeline-height 22)
+  :hook (after-init . doom-modeline-mode))
+
+(use-package flycheck)
+
 (provide 'init-core-packages)
 ;;; init-core-packages.el ends here

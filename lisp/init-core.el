@@ -12,6 +12,7 @@
 (require 'init-core-keybindings)
 (require 'init-magit)
 (require 'init-completion)
+(require 'init-lsp)
 
 (provide 'init-core)
 ;; init-core.el ends here

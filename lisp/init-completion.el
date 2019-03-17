@@ -11,10 +11,14 @@
 (use-package counsel
   :init
   (use-package counsel-projectile)
-  (setq-default ivy-re-builders-alist
-                '((t . ivy--regex-fuzzy)))
+  (use-package flx)
+  (setq-default
+   ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+   ivy-initial-inputs-alist nil)
   :general
-  (general-nmap
+  (general-define-key
+   :keymaps 'override
+   :states '(normal visual motion)
    :prefix "SPC"
    "SPC" '(counsel-M-x :which-key "M-x")
    "p"   '(:ignore t :which-key "Project")
@@ -24,6 +28,10 @@
    "ff"  '(counsel-find-file :which-key "Find file")
    "s"   '(:ignore t :which-key "Search")
    "sp"  '(counsel-projectile-rg :which-key "Search in project")))
+
+(use-package company
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (provide 'init-completion)
 ;; init-completion.el ends here

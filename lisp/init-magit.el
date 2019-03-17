@@ -9,7 +9,9 @@
   :init
   (use-package evil-magit)
   :general
-  (general-nmap
+  (general-define-key
+   :keymaps 'override
+   :states '(normal visual motion)
    :prefix "SPC"
    "g"  '(:ignore t :which-key "Git")
    "gs" '(magit-status :which-key "git status")))

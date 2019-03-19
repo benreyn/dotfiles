@@ -18,7 +18,8 @@
  "wo" 'delete-other-windows
  "wd" 'delete-window
  "b"  '(:ignore t :which-key "Buffers")
- "bd" 'kill-this-buffer)
+ "bd" 'kill-this-buffer
+ ";"  'comment-or-uncomment-region)
 
 (provide 'init-core-keybindings)
 ;; init-core-keybindings.el ends here

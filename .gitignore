@@ -4,3 +4,4 @@ custom.el
 transient/
 *.cache
 .lsp-session-v1
+config.el

@@ -5,11 +5,6 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(org-babel-load-file (concat user-emacs-directory "config.org"))
 
-(require 'init-core)
-(require 'init-langs)
-
-;; Load theme
-(use-package color-theme-sanityinc-tomorrow
-  :config (load-theme 'sanityinc-tomorrow-eighties t))
+;;; init.el ends here

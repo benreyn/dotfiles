@@ -1,0 +1,256 @@
+* Emacs Configuration
+** Optimize startup
+
+#+BEGIN_SRC emacs-lisp
+    (defvar benreyn/original-gc-cons-threshold gc-cons-threshold)
+
+    (defvar benreyn/startup-gc-cons-threshold (* 256 1024 1024))
+
+    (defvar benreyn/original-file-name-handler-alist file-name-handler-alist)
+
+    (setq
+     file-name-handler-alist nil
+     gc-cons-threshold       benreyn/startup-gc-cons-threshold)
+
+
+    (defun benreyn/restore-startup-optimizations ()
+	(setq
+	file-name-handler-alist benreyn/original-file-name-handler-alist
+	gc-cons-threshold       benreyn/original-gc-cons-threshold))
+
+    (add-hook 'emacs-startup-hook #'benreyn/restore-startup-optimizations)
+#+END_SRC
+
+** use-package
+
+#+BEGIN_SRC emacs-lisp
+    (setq package-enable-at-startup nil)
+    (package-initialize)
+
+    (add-to-list 'package-archives
+		'("melpa" . "https://melpa.org/packages/") t)
+
+    (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+    (setq use-package-verbose       t
+	use-package-always-ensure t)
+
+    (require 'use-package)
+#+END_SRC
+
+** Sane defaults
+
+#+BEGIN_SRC emacs-lisp
+    (menu-bar-mode -1)
+
+    (scroll-bar-mode -1)
+
+    (tool-bar-mode -1)
+
+    (add-hook 'prog-mode-hook #'linum-relative-mode)
+
+    (add-to-list 'default-frame-alist
+		'(ns-transparent-titlebar . t))
+
+    (setq
+    make-backup-files         nil
+    auto-save-list-file-name  nil
+    auto-save-default         nil
+    inhibit-startup-message   t
+    visible-bell              nil)
+
+    (set-face-attribute 'default nil :height 140)
+
+    (setq ring-bell-function
+	(lambda ()
+	    (invert-face 'mode-line)
+	    (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+
+    (setq custom-file
+	(concat
+	(file-name-directory user-emacs-directory) "custom.el"))
+    (unless (file-exists-p custom-file) (write-region "" nil custom-file))
+    (load custom-file)
+#+END_SRC
+  
+** Core packages
+
+#+BEGIN_SRC emacs-lisp
+    (use-package exec-path-from-shell
+    :init
+    (exec-path-from-shell-initialize))
+
+    (use-package evil
+    :init
+    (use-package linum-relative)
+    (use-package evil-surround
+	:config
+	(global-evil-surround-mode t))
+    :config
+    (evil-mode t))
+
+    (use-package which-key
+    :init (which-key-mode))
+
+    (use-package general
+    :config
+    (general-evil-setup t))
+
+    (use-package projectile
+    :init
+    (projectile-mode t))
+
+    (use-package smartparens
+    :init
+    (require 'smartparens-config)
+    (add-hook 'prog-mode-hook #'smartparens-mode))
+
+    (use-package doom-modeline
+    :init
+    (setq doom-modeline-height 22)
+    :hook (after-init . doom-modeline-mode))
+
+    (use-package flycheck)
+#+END_SRC
+
+** Core keybindings
+
+#+BEGIN_SRC emacs-lisp
+(general-define-key
+    :keymaps 'override
+    :states '(normal visual motion)
+    :prefix "SPC"
+    "w"  '(:ignore t :which-key "Windows")
+    "wV" 'split-window-right
+    "wk" 'evil-window-up
+    "wj" 'evil-window-down
+    "wh" 'evil-window-left
+    "wl" 'evil-window-right
+    "wo" 'delete-other-windows
+    "wd" 'delete-window
+    "b"  '(:ignore t :which-key "Buffers")
+    "bd" 'kill-this-buffer
+    ";"  'comment-or-uncomment-region)
+#+END_SRC
+** Magit
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :init
+  (use-package evil-magit)
+  :general
+  (general-define-key
+   :keymaps 'override
+   :states '(normal visual motion)
+   :prefix "SPC"
+   "g"  '(:ignore t :which-key "Git")
+   "gs" '(magit-status :which-key "git status")))
+#+END_SRC
+
+** Completion
+
+#+BEGIN_SRC emacs-lisp
+(eval-and-compile
+  (require 'subr-x))
+
+(use-package counsel
+  :init
+  (use-package counsel-projectile)
+  (use-package flx)
+  (setq-default
+   ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+   ivy-initial-inputs-alist nil)
+  (ivy-mode t)
+  :general
+  (general-define-key
+   :keymaps 'override
+   :states '(normal visual motion)
+   :prefix "SPC"
+   "SPC" '(counsel-M-x :which-key "M-x")
+   "p"   '(:ignore t :which-key "Project")
+   "pf"  '(counsel-projectile-find-file :which-key "Find in project")
+   "pp"  '(counsel-projectile-switch-project :which-key "Switch project")
+   "f"   '(:ignore t :which-key "Files")
+   "ff"  '(counsel-find-file :which-key "Find file")
+   "s"   '(:ignore t :which-key "Search")
+   "sp"  '(counsel-projectile-rg :which-key "Search in project")))
+
+(use-package company
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+
+** LSP
+
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-mode
+    :commands lsp
+    :hook prog-mode
+    :init
+    (use-package lsp-ui)
+    (use-package company-lsp)
+    (setq lsp-prefer-flymake nil))
+#+END_SRC
+
+** Langauges
+
+*** Ruby
+
+#+BEGIN_SRC emacs-lisp
+(use-package rspec-mode
+  :init
+  (use-package inf-ruby
+    :init
+    (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+  :general
+  (general-nmap
+   :prefix "SPC"
+   "r"     '(:ignore t :which-key "Rspec")
+   "r TAB" 'rspec-toggle-spec-and-target
+   "ra"    'rspec-verify-all
+   "rr"    'rspec-rerun
+   "rm"    'rspec-verify-matching
+   "rf"    'rspec-run-last-failed))
+#+END_SRC
+    
+*** Javascript
+
+#+BEGIN_SRC emacs-lisp
+(use-package coffee-mode)
+
+(setq js-indent-level 2)
+#+END_SRC
+
+*** Slim
+
+#+BEGIN_SRC emacs-lisp
+(use-package slim-mode)
+#+END_SRC
+
+*** Yaml
+
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode
+  :mode
+  (("\\.\\(yml\\|yaml\\)\\'" . yaml-mode)
+   ("Procfile\\'" . yaml-mode))
+  :config
+  (add-hook 'yaml-mode-hook
+	    '(lambda ()
+	       (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+#+END_SRC
+
+*** Rust
+
+#+BEGIN_SRC emacs-lisp
+(use-package toml-mode)
+(use-package rustic)
+#+END_SRC
+
+** Theme
+#+BEGIN_SRC emacs-lisp
+(use-package color-theme-sanityinc-tomorrow
+    :config (load-theme 'sanityinc-tomorrow-eighties t))
+#+END_SRC

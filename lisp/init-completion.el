@@ -15,6 +15,7 @@
   (setq-default
    ivy-re-builders-alist '((t . ivy--regex-fuzzy))
    ivy-initial-inputs-alist nil)
+  (ivy-mode t)
   :general
   (general-define-key
    :keymaps 'override

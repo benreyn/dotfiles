@@ -227,8 +227,9 @@
 
 #+BEGIN_SRC emacs-lisp
 (use-package slim-mode)
-#+END_SRC
 
+(setq slim-indent-offset 2)
+#+END_SRC
 *** Yaml
 
 #+BEGIN_SRC emacs-lisp

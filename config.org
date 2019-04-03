@@ -1,4 +1,9 @@
-* Emacs Configuration
+#+TITLE: Emacs Configuration
+#+AUTHOR: Benjamin J Reynolds
+
+* Introduction
+This is the emacs configuration that I use for software development
+* Content
 ** Optimize startup
 
 #+BEGIN_SRC emacs-lisp

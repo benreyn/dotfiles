@@ -112,6 +112,11 @@
     (setq doom-modeline-height 22)
     :hook (after-init . doom-modeline-mode))
 
+    (use-package editorconfig
+    :ensure t
+    :config
+    (editorconfig-mode 1))
+
     (use-package flycheck)
 #+END_SRC
 

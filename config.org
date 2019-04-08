@@ -150,6 +150,7 @@ This is the emacs configuration that I use for software development
 (use-package magit
   :init
   (use-package evil-magit)
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
   :general
   (general-define-key
    :keymaps 'override

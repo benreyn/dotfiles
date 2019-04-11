@@ -173,6 +173,7 @@ This is the emacs configuration that I use for software development
   (setq-default
    ivy-re-builders-alist '((t . ivy--regex-fuzzy))
    ivy-initial-inputs-alist nil)
+  (add-to-list 'ivy-re-builders-alist '(counsel-ag . ivy--regex))
   (ivy-mode t)
   :general
   (general-define-key

@@ -1,10 +1,17 @@
-#+TITLE: Emacs Configuration
+#+TITLE: Emacs Init File
 #+AUTHOR: Benjamin J Reynolds
 
+* TODO utility function to close all other buffers
+* TODO setup [[https://github.com/wasamasa/eyebrowse]]
 * Introduction
-This is the emacs configuration that I use for software development
-* Content
-** Optimize startup
+This is the emacs configuration that I use for software development and other
+various computing tasks. 
+
+* Installation
+** TODO Write installation instructions
+* Configuration
+** Initialize
+*** Optimize startup
 
 #+BEGIN_SRC emacs-lisp
     (defvar benreyn/original-gc-cons-threshold gc-cons-threshold)
@@ -26,7 +33,7 @@ This is the emacs configuration that I use for software development
     (add-hook 'emacs-startup-hook #'benreyn/restore-startup-optimizations)
 #+END_SRC
 
-** use-package
+*** Package Management (use-package)
 
 #+BEGIN_SRC emacs-lisp
     (setq package-enable-at-startup nil)

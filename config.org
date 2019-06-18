@@ -219,11 +219,7 @@ various computing tasks.
 
 #+BEGIN_SRC emacs-lisp
 (use-package rspec-mode
-  :init
-  (use-package inf-ruby
-    :init
-    (add-hook 'after-init-hook 'inf-ruby-switch-setup))
-  :general
+ :general
   (general-nmap
    :prefix "SPC"
    "r"     '(:ignore t :which-key "Rspec")
@@ -232,6 +228,11 @@ various computing tasks.
    "rr"    'rspec-rerun
    "rm"    'rspec-verify-matching
    "rf"    'rspec-run-last-failed))
+   
+(use-package ruby-mode
+  :init
+  (use-package inf-ruby
+    :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)))
 #+END_SRC
     
 *** Javascript

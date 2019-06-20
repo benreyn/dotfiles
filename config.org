@@ -140,7 +140,8 @@ various computing tasks.
     :states '(normal visual motion)
     :prefix "SPC"
     "w"  '(:ignore t :which-key "Windows")
-    "wV" 'split-window-right
+    "wV" 'evil-window-vsplit
+    "wS" 'evil-window-split
     "wk" 'evil-window-up
     "wj" 'evil-window-down
     "wh" 'evil-window-left

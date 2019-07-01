@@ -199,7 +199,8 @@ various computing tasks.
 
 (use-package company
   :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (use-package yasnippet))
 #+END_SRC
 
 ** LSP
@@ -207,11 +208,13 @@ various computing tasks.
 #+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
     :commands lsp
-    :hook prog-mode
+    :hook 
+    (prog-mode . lsp)
     :init
     (use-package lsp-ui)
     (use-package company-lsp)
-    (setq lsp-prefer-flymake nil))
+    (setq lsp-prefer-flymake nil)
+    :commands lsp)
 #+END_SRC
 
 ** Langauges

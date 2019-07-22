@@ -292,6 +292,12 @@ various computing tasks.
 (use-package rustic)
 #+END_SRC
 
+*** Swift
+
+#+BEGIN_SRC emacs-lisp
+(use-package swift-mode)
+#+END_SRC
+
 ** Theme
 #+BEGIN_SRC emacs-lisp
 (use-package color-theme-sanityinc-tomorrow

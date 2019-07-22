@@ -87,6 +87,16 @@ various computing tasks.
     (load custom-file)
 #+END_SRC
   
+** User lisp
+
+Elisp that I have written or copied lives in =./lisp=. Add it to the load path
+and require whats there.
+
+#+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
+    (require 'utility-functions)
+#+END_SRC
+
 ** Core packages
 
 #+BEGIN_SRC emacs-lisp

@@ -150,8 +150,10 @@ various computing tasks.
     "wd" 'delete-window
     "b"  '(:ignore t :which-key "Buffers")
     "bd" 'kill-this-buffer
+    "bb" 'ivy-switch-buffer
     ";"  'comment-or-uncomment-region)
 #+END_SRC
+
 ** Magit
 
 #+BEGIN_SRC emacs-lisp

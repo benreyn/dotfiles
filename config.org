@@ -292,6 +292,12 @@ and require whats there.
 
 (setq slim-indent-offset 2)
 #+END_SRC
+*** Lua
+
+#+BEGIN_SRC emacs-lisp
+(use-package lua-mode)
+#+END_SRC
+
 *** Yaml
 
 #+BEGIN_SRC emacs-lisp

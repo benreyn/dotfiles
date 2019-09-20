@@ -1,7 +1,6 @@
 #+TITLE: Emacs Init File
 #+AUTHOR: Benjamin J Reynolds
 
-* TODO utility function to close all other buffers
 * TODO setup [[https://github.com/wasamasa/eyebrowse]]
 * Introduction
 This is the emacs configuration that I use for software development and other

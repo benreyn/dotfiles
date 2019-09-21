@@ -1,0 +1,3 @@
+* TODO setup [[https://github.com/wasamasa/eyebrowse][eyebrowse]]
+* TODO Write installation instructions
+* TODO setup and install [[https://github.com/endofunky/bundler.el][bundler.el]]

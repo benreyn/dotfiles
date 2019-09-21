@@ -1,13 +1,11 @@
 #+TITLE: Emacs Init File
 #+AUTHOR: Benjamin J Reynolds
 
-* TODO setup [[https://github.com/wasamasa/eyebrowse]]
 * Introduction
 This is the emacs configuration that I use for software development and other
 various computing tasks. 
 
 * Installation
-** TODO Write installation instructions
 * Configuration
 ** Initialize
 *** Optimize startup
@@ -167,7 +165,13 @@ and require whats there.
 ** Org mode
 
 #+BEGIN_SRC emacs-lisp
+
 (add-to-list 'org-modules 'org-habits)
+
+(use-package magit-org-todos
+  :config
+  (magit-org-todos-autoinsert))
+
 #+END_SRC
 
 ** Magit

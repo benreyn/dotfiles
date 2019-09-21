@@ -2,15 +2,15 @@
 #+AUTHOR: Benjamin J Reynolds
 
 * Introduction
-This is the emacs configuration that I use for software development and other
-various computing tasks. 
+  This is the emacs configuration that I use for software development and other
+  various computing tasks. 
 
 * Installation
 * Configuration
 ** Initialize
 *** Optimize startup
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
     (defvar benreyn/original-gc-cons-threshold gc-cons-threshold)
 
     (defvar benreyn/startup-gc-cons-threshold (* 256 1024 1024))
@@ -28,11 +28,11 @@ various computing tasks.
 	gc-cons-threshold       benreyn/original-gc-cons-threshold))
 
     (add-hook 'emacs-startup-hook #'benreyn/restore-startup-optimizations)
-#+END_SRC
+    #+END_SRC
 
 *** Package Management (use-package)
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
     (setq package-enable-at-startup nil)
     (package-initialize)
 
@@ -47,11 +47,11 @@ various computing tasks.
 	use-package-always-ensure t)
 
     (require 'use-package)
-#+END_SRC
+    #+END_SRC
 
 ** Sane defaults
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
     (menu-bar-mode -1)
 
     (scroll-bar-mode -1)
@@ -82,21 +82,21 @@ various computing tasks.
 	(file-name-directory user-emacs-directory) "custom.el"))
     (unless (file-exists-p custom-file) (write-region "" nil custom-file))
     (load custom-file)
-#+END_SRC
+   #+END_SRC
   
 ** User lisp
 
-Elisp that I have written or copied lives in =./lisp=. Add it to the load path
-and require whats there.
+   Elisp that I have written or copied lives in =./lisp=. Add it to the load path
+   and require whats there.
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
     (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
     (require 'utility-functions)
-#+END_SRC
+   #+END_SRC
 
 ** Core packages
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
     (use-package exec-path-from-shell
     :init
     (when (memq window-system '(mac ns))
@@ -138,11 +138,11 @@ and require whats there.
     (editorconfig-mode 1))
 
     (use-package flycheck)
-#+END_SRC
+   #+END_SRC
 
 ** Core keybindings
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 (general-define-key
     :keymaps 'override
     :states '(normal visual motion)
@@ -160,11 +160,11 @@ and require whats there.
     "bd" 'kill-this-buffer
     "bb" 'ivy-switch-buffer
     ";"  'comment-or-uncomment-region)
-#+END_SRC
+   #+END_SRC
 
 ** Org mode
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 
 (add-to-list 'org-modules 'org-habits)
 
@@ -172,11 +172,11 @@ and require whats there.
   :config
   (magit-org-todos-autoinsert))
 
-#+END_SRC
+   #+END_SRC
 
 ** Magit
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 (use-package magit
   :init
   (use-package evil-magit)
@@ -188,11 +188,11 @@ and require whats there.
    :prefix "SPC"
    "g"  '(:ignore t :which-key "Git")
    "gs" '(magit-status :which-key "git status")))
-#+END_SRC
+   #+END_SRC
 
 ** Completion
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 (eval-and-compile
   (require 'subr-x))
 
@@ -223,11 +223,11 @@ and require whats there.
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   (use-package yasnippet))
-#+END_SRC
+   #+END_SRC
 
 ** LSP
 
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
     :commands lsp
     :hook 
@@ -237,13 +237,13 @@ and require whats there.
     (use-package company-lsp)
     (setq lsp-prefer-flymake nil)
     :commands lsp)
-#+END_SRC
+   #+END_SRC
 
 ** Langauges
 
 *** Web
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package web-mode
   :mode
   ("\\.html\\.erb$" "\\.js\\.erb$" "\\.jsx?$")
@@ -254,11 +254,11 @@ and require whats there.
   (setq web-mode-enable-auto-pairing t)
   (setq web-mode-enable-auto-expanding t)
   (setq web-mode-enable-css-colorization t))
-#+END_SRC
+    #+END_SRC
 
 *** Ruby
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package rspec-mode
  :general
   (general-nmap
@@ -274,11 +274,11 @@ and require whats there.
   :init
   (use-package inf-ruby
     :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)))
-#+END_SRC
+    #+END_SRC
     
 *** Javascript
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package coffee-mode
   :mode 
   ("\\.coffee$" "Cakefile" "\\.coffee\\.erb$")
@@ -286,24 +286,24 @@ and require whats there.
   (setq coffee-tab-width 2))
 
 (setq js-indent-level 2)
-#+END_SRC
+    #+END_SRC
 
 *** Slim
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package slim-mode)
 
 (setq slim-indent-offset 2)
-#+END_SRC
+    #+END_SRC
 *** Lua
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package lua-mode)
-#+END_SRC
+    #+END_SRC
 
 *** Yaml
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode
   :mode
   (("\\.\\(yml\\|yaml\\)\\'" . yaml-mode)
@@ -312,23 +312,23 @@ and require whats there.
   (add-hook 'yaml-mode-hook
 	    '(lambda ()
 	       (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
-#+END_SRC
+    #+END_SRC
 
 *** Rust
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package toml-mode)
 (use-package rustic)
-#+END_SRC
+    #+END_SRC
 
 *** Swift
 
-#+BEGIN_SRC emacs-lisp
+    #+BEGIN_SRC emacs-lisp
 (use-package swift-mode)
-#+END_SRC
+    #+END_SRC
 
 ** Theme
-#+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
 (use-package color-theme-sanityinc-tomorrow
     :config (load-theme 'sanityinc-tomorrow-eighties t))
-#+END_SRC
+   #+END_SRC

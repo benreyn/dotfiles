@@ -273,7 +273,13 @@
 (use-package ruby-mode
   :init
   (use-package inf-ruby
-    :init (add-hook 'after-init-hook 'inf-ruby-switch-setup)))
+    :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+  (use-package bundler
+    :general
+     (general-nmap
+      :prefix "SPC"
+      "b"  '(:ignore t :which-key "Bundler")
+      "bi" 'bundle-install)))
     #+END_SRC
     
 *** Javascript

@@ -324,7 +324,17 @@
 
     #+BEGIN_SRC emacs-lisp
 (use-package toml-mode)
-(use-package rustic)
+(use-package rustic
+ :general
+  (general-nmap
+   :prefix "SPC"
+   "c"  '(:ignore t :which-key "Cargo")
+   "ct" 'rustic-cargo-test
+   "cr" 'rustic-cargo-run
+   "cb" 'rustic-cargo-build
+   "cf" 'rustic-cargo-fmt
+   "cc" 'rustic-cargo-clippy
+   "co" 'rustic-cargo-outdated))
     #+END_SRC
 
 *** Swift

@@ -1,4 +1,5 @@
-* TODO setup [[https://github.com/wasamasa/eyebrowse][eyebrowse]]
+* TODO Setup [[https://github.com/wasamasa/eyebrowse][eyebrowse]]
 * TODO Write installation instructions
-* DONE setup and install [[https://github.com/endofunky/bundler.el][bundler.el]]
-* TODO setup and install [[https://github.com/zweifisch/foreman-mode][foreman-mode]]
+* TODO Tweak org-mode config for a decent GTD workflow
+* TODO Setup and install [[https://github.com/zweifisch/foreman-mode][foreman-mode]]
+* TODO Look into using [[https://github.com/magit/forge][forge]] 

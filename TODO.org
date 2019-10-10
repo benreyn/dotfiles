@@ -3,3 +3,4 @@
 * TODO Tweak org-mode config for a decent GTD workflow
 * TODO Setup and install [[https://github.com/zweifisch/foreman-mode][foreman-mode]]
 * TODO Look into using [[https://github.com/magit/forge][forge]] 
+* TODO Setup [[https://github.com/gabesoft/evil-mc][evil-mc]]

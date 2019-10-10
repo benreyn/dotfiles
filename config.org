@@ -166,7 +166,20 @@
 
    #+BEGIN_SRC emacs-lisp
 
-(add-to-list 'org-modules 'org-habits)
+(add-to-list 'org-modules 'org-habit t)
+
+(use-package org-habit
+  :after org)
+
+(setq org-agenda-files '("~/org/habits.org"))
+
+(use-package evil-org
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 
 (use-package magit-org-todos
   :config

@@ -138,6 +138,15 @@
     (editorconfig-mode 1))
 
     (use-package flycheck)
+    
+    (use-package multi-term
+    :general
+     (general-nmap
+        :prefix "SPC"
+        "t"  '(:ignore t :which-key "Terminals")
+        "to" 'multi-term
+        "tn" 'multi-term-next
+        "tp" 'multi-term-prev))
    #+END_SRC
 
 ** Core keybindings

@@ -177,8 +177,7 @@
 
 (add-to-list 'org-modules 'org-habit t)
 
-(use-package org-habit
-  :after org)
+(require 'org-habit)
 
 (setq org-agenda-files '("~/org/habits.org"))
 

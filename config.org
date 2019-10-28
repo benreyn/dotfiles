@@ -25,7 +25,12 @@
     (defun benreyn/restore-startup-optimizations ()
 	(setq
 	file-name-handler-alist benreyn/original-file-name-handler-alist
-	gc-cons-threshold       benreyn/original-gc-cons-threshold))
+	gc-cons-threshold       benreyn/original-gc-cons-threshold)
+	(mapc 'makunbound 
+	'(
+	benreyn/original-file-name-handler-alist
+	benreyn/startup-gc-cons-threshold
+	benreyn/original-gc-cons-threshold)))
 
     (add-hook 'emacs-startup-hook #'benreyn/restore-startup-optimizations)
     #+END_SRC

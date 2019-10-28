@@ -182,6 +182,13 @@
 
 (setq org-agenda-files '("~/org/habits.org"))
 
+(use-package org
+  :general
+   (general-nmap
+    :prefix "SPC"
+    "o"  '(:ignore t :which-key "Org")
+    "oa" 'org-agenda))
+  
 (use-package evil-org
   :after org
   :config

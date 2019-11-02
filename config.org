@@ -262,14 +262,13 @@
 
    #+BEGIN_SRC emacs-lisp
 (use-package lsp-mode
-    :commands lsp
-    :hook 
-    (prog-mode . lsp)
+    :hook
+    (ruby-mode . lsp-deferred)
+    :commands 
+    (lsp lsp-deferred)
     :init
-    (use-package lsp-ui)
     (use-package company-lsp)
-    (setq lsp-prefer-flymake nil)
-    :commands lsp)
+    (setq lsp-prefer-flymake nil))
    #+END_SRC
 
 ** Langauges

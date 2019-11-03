@@ -260,16 +260,12 @@
 
 ** LSP
 
-   #+BEGIN_SRC emacs-lisp
-(use-package lsp-mode
-    :hook
-    (ruby-mode . lsp-deferred)
-    :commands 
-    (lsp lsp-deferred)
-    :init
-    (use-package company-lsp)
-    (setq lsp-prefer-flymake nil))
-   #+END_SRC
+    #+BEGIN_SRC emacs-lisp
+    (use-package eglot
+  :ensure t
+  :commands (eglot eglot-ensure)
+  :hook ((ruby-mode . eglot-ensure)))
+    #+END_SRC
 
 ** Langauges
 
@@ -357,6 +353,8 @@
     #+BEGIN_SRC emacs-lisp
 (use-package toml-mode)
 (use-package rustic
+ :config
+ (setq rustic-lsp-client 'eglot)
  :general
   (general-nmap
    :prefix "SPC"

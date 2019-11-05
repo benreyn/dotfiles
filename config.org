@@ -331,6 +331,11 @@
 
     #+BEGIN_SRC emacs-lisp
 (use-package slim-mode)
+(use-package slim-inky-mode
+  :ensure nil
+  :load-path "lisp/"
+  :mode 
+  ("\\.inky$"))
 
 (setq slim-indent-offset 2)
     #+END_SRC

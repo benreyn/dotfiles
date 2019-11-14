@@ -3,7 +3,7 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
 # setup cdpath
-export CDPATH=.:$HOME/code/personal:$HOME/code/work:$HOME/code/rfg
+export CDPATH=.:$HOME/code
 
 # Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
@@ -11,18 +11,14 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # Path for homebrew (/usr/local/[s]bin)
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-# Setup rbenv
-if which rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-fi
+# Setup chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # Setup pyenv
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
-
-# Cask
-export PATH=$HOME/.cask/bin:$PATH
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion

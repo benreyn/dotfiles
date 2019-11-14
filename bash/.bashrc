@@ -2,6 +2,9 @@
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
+# stop macOS from telling me to switch zsh
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # setup cdpath
 export CDPATH=.:$HOME/code
 
@@ -41,8 +44,8 @@ alias be='bundle exec'
 alias emacsc='emacsclient -tty'
 
 # asdf version manager
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. $(brew --prefix asdf)/asdf.sh
+. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
 
 # gpg
 

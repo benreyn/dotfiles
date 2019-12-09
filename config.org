@@ -316,6 +316,7 @@
   :init
   (use-package inf-ruby
     :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+  (use-package chruby)
   (use-package bundler
     :general
      (general-nmap

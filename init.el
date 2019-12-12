@@ -5,6 +5,6 @@
 
 ;;; Code:
 
-(org-babel-load-file (concat user-emacs-directory "config.org"))
+(org-babel-load-file (concat user-emacs-directory "old-config.org"))
 
 ;;; init.el ends here

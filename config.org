@@ -210,6 +210,9 @@
   :config
   (magit-org-todos-autoinsert))
 
+  (use-package toc-org
+:after org
+:hook (org-mode . toc-org-enable))
    #+END_SRC
 
 ** Magit

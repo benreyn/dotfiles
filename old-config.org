@@ -340,6 +340,12 @@
 (setq js-indent-level 2)
     #+END_SRC
 
+*** Elm
+
+    #+BEGIN_SRC emacs-lisp
+(use-package elm-mode)
+    #+END_SRC
+
 *** Slim
 
     #+BEGIN_SRC emacs-lisp

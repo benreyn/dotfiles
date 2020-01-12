@@ -241,6 +241,7 @@
        :init
        (require 'helm-config)
        (setq helm-completion-style 'helm-fuzzy)
+       (setq helm-M-x-fuzzy-match t)
        (use-package helm-projectile)
        (use-package helm-rg)
        (use-package helm-ag

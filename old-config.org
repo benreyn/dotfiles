@@ -289,7 +289,7 @@
     #+BEGIN_SRC emacs-lisp
 (use-package web-mode
   :mode
-  ("\\.html\\.erb$" "\\.js\\.erb$" "\\.jsx?$")
+  ("\\.html\\.erb$" "\\.js\\.erb$" "\\.jsx?$" "\\.html\\.eex$")
   :init
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
@@ -329,6 +329,13 @@
       "bi" 'bundle-install)))
     #+END_SRC
     
+*** Elixir
+ 
+    #+BEGIN_SRC emacs-lisp
+    (use-package elixir-mode)
+    #+END_SRC
+
+   
 *** Javascript
 
     #+BEGIN_SRC emacs-lisp

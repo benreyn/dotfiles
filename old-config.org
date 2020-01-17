@@ -333,8 +333,8 @@
  
     #+BEGIN_SRC emacs-lisp
     (use-package elixir-mode)
+    (use-package alchemist)
     #+END_SRC
-
    
 *** Javascript
 

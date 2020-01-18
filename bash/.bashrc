@@ -2,29 +2,19 @@
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-# stop macOS from telling me to switch zsh
-export BASH_SILENCE_DEPRECATION_WARNING=1
+if [ $(uname) == 'Linux' ]; then
+    source ~/.linux.sh
+else
+    source ~/.mac.sh
+fi
+
 
 # setup cdpath
 export CDPATH=.:$HOME/code
 
-# Postgres
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-
-# Path for homebrew (/usr/local/[s]bin)
-PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
-# Setup chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
 # Setup pyenv
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
-fi
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
 fi
 
 green="\[\033[0;32m\]"
@@ -43,10 +33,6 @@ export PS1="$purple\u$blue \w$green\$(__git_ps1) \n$ $reset"
 alias be='bundle exec'
 alias emacsc='emacsclient -tty'
 
-# asdf version manager
-. $(brew --prefix asdf)/asdf.sh
-. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
-
 # gpg
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
@@ -59,6 +45,8 @@ fi
 blowport() {
     lsof -ti tcp:$1 | xargs kill
 }
+
+alias ls='ls --color=auto'
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk

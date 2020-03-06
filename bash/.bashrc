@@ -8,6 +8,11 @@ else
     source ~/.mac.sh
 fi
 
+# Setup nodenv
+export PATH="$HOME/.nodenv/bin:$PATH"
+if which nodenv > /dev/null; then
+    eval "$(nodenv init -)"
+fi
 
 # setup cdpath
 export CDPATH=.:$HOME/code

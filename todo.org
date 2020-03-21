@@ -1,6 +1,5 @@
 * TODO Setup [[https://github.com/wasamasa/eyebrowse][eyebrowse]]
 * TODO Write installation instructions
 * TODO Tweak org-mode config for a decent GTD workflow
-* TODO Setup and install [[https://github.com/zweifisch/foreman-mode][foreman-mode]]
 * TODO Look into using [[https://github.com/magit/forge][forge]] 
-* TODO Switch to [[https://github.com/emacs-helm/helm/wiki#install][helm]]
+* TODO Setup minitest and rails-mode w/ kbds

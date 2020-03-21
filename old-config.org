@@ -320,6 +320,7 @@
   :init
   (use-package inf-ruby
     :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+    (setq ruby-insert-encoding-magic-comment nil)
   (use-package chruby)
   (use-package bundler
     :general
@@ -415,3 +416,25 @@
 (use-package color-theme-sanityinc-tomorrow
     :config (load-theme 'sanityinc-tomorrow-eighties t))
    #+END_SRC
+* MISC
+No home for this code for now. Just dumping it here until I get the config.org 
+rewrite going
+   #+BEGIN_SRC emacs-lisp
+(use-package foreman-mode
+:load-path "~/code/foreman-mode"
+:config
+(setq foreman-procfile-name "Procfile.dev")
+:general
+(general-nmap
+:prefix "SPC"
+"f"   '(:ignore t :which-key "foreman")
+"fs"  'foreman-start
+"f."  'foreman-view-buffer
+"fp"  '(:ignore t :which-key "processes")
+"fps" 'foreman-start-proc
+"fpr" 'foreman-restart-proc))
+
+(exec-path-from-shell-initialize)
+(server-start)
+   #+END_SRC
+   

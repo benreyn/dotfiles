@@ -1,0 +1,6 @@
+* TODO Get my bashrc organized and working on both Arch and Ubuntu
+* TODO script my xrandr and desktop backround stuff stuff
+  - http://sergeiturukin.com/2017/07/03/laptop-dock-archlinux.html
+* TODO get a nice polybar config going
+* TODO cleanup old mac app configs (dont need them anymore)
+* TODO Follow this tut maybe https://www.youtube.com/watch?v=ARKIwOlazKI

@@ -25,7 +25,7 @@ export PS1="$purple\u$blue \w$green\$(__git_ps1) \n$ $reset"
 
 # Aliases
 alias be='bundle exec'
-alias emacsc='emacsclient -tty'
+alias ec='emacsclient -tty'
 
 # gpg
 

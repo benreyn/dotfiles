@@ -8,19 +8,8 @@ else
     source ~/.mac.sh
 fi
 
-# Setup nodenv
-export PATH="$HOME/.nodenv/bin:$PATH"
-if which nodenv > /dev/null; then
-    eval "$(nodenv init -)"
-fi
-
 # setup cdpath
 export CDPATH=.:$HOME/code
-
-# Setup pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-fi
 
 green="\[\033[0;32m\]"
 blue="\[\033[0;34m\]"
@@ -54,11 +43,4 @@ blowport() {
 alias ls='ls --color=auto'
 
 export PATH="$HOME/.cargo/bin:$PATH"
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/usr/local/go/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

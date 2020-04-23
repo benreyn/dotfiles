@@ -339,6 +339,12 @@
       "bi" 'bundle-install)))
     #+END_SRC
     
+*** Go
+
+    #+BEGIN_SRC emacs-lisp
+(use-package go-mode)
+    #+END_SRC
+ 
 *** Elixir
  
     #+BEGIN_SRC emacs-lisp

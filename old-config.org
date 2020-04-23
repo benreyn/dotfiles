@@ -281,15 +281,18 @@
 
 ** LSP
 
-    #+BEGIN_SRC emacs-lisp
-    (use-package eglot
-  :ensure t
-  :commands (eglot eglot-ensure)
-  :hook ((ruby-mode . eglot-ensure)))
-    #+END_SRC
+   #+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+  :hook ((rustic-mode . lsp)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+  (use-package lsp-ui :commands lsp-ui-mode)
+  (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+  (use-package dap-mode)
+   #+END_SRC
 
 ** Langauges
-
 *** Web
 
     #+BEGIN_SRC emacs-lisp
@@ -398,7 +401,7 @@
 (use-package toml-mode)
 (use-package rustic
  :config
- (setq rustic-lsp-client 'eglot)
+ (setq lsp-rust-server 'rust-analyzer)
  :general
   (general-nmap
    :prefix "SPC"

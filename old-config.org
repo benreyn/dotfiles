@@ -188,8 +188,14 @@
 (add-to-list 'org-modules 'org-habit t)
 
 (require 'org-habit)
+(require 'org-mouse)
 
-(setq org-agenda-files '("~/org/habits.org"))
+(setq org-agenda-files 
+'(
+"~/Dropbox/org/habits.org"
+"~/Dropbox/org/todo.org"
+))
+(setq org-log-into-drawer t)
 
 (use-package org
   :general

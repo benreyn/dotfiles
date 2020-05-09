@@ -1,0 +1,20 @@
+#+TITLE: Emacs Configuration File
+#+AUTHOR: Benjamin Reynolds
+
+* Table of Contents :TOC:
+- [[#introduction][Introduction]]
+
+* Introduction
+  
+I have been a user of GNU Emacs for most of my development career. In that time I 
+have experimented with a number of pre-built emacs configurations most notably
+[[https://github.com/syl20bnr/spacemacs][spacemacs]] and [[https://github.com/hlissner/doom-emacs][doom-emacs]].
+
+After a great deal of frustration with this kinds of "distrubtions" of emacs,
+I decided to start work on my own configuration file. This document presents that
+configuration as literate elisp in an org file.
+
+Much of this configuration is inspired by or based on the configuration of [[https://github.com/rememberYou/.emacs.d][Terencio Agozzino]].
+
+
+

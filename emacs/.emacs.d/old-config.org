@@ -1,0 +1,469 @@
+#+TITLE: Emacs Init File
+#+AUTHOR: Benjamin J Reynolds
+
+* Introduction
+  This is the emacs configuration that I use for software development and other
+  various computing tasks. 
+
+* Installation
+* Configuration
+** Initialize
+*** Optimize startup
+
+    #+BEGIN_SRC emacs-lisp
+    (defvar benreyn/original-gc-cons-threshold gc-cons-threshold)
+
+    (defvar benreyn/startup-gc-cons-threshold (* 256 1024 1024))
+
+    (defvar benreyn/original-file-name-handler-alist file-name-handler-alist)
+
+    (setq
+     file-name-handler-alist nil
+     gc-cons-threshold       benreyn/startup-gc-cons-threshold)
+
+
+    (defun benreyn/restore-startup-optimizations ()
+	(setq
+	file-name-handler-alist benreyn/original-file-name-handler-alist
+	gc-cons-threshold       benreyn/original-gc-cons-threshold)
+	(mapc 'makunbound 
+	'(
+	benreyn/original-file-name-handler-alist
+	benreyn/startup-gc-cons-threshold
+	benreyn/original-gc-cons-threshold)))
+
+    (add-hook 'emacs-startup-hook #'benreyn/restore-startup-optimizations)
+    #+END_SRC
+
+*** Package Management (use-package)
+
+    #+BEGIN_SRC emacs-lisp
+    (setq package-enable-at-startup nil)
+    (package-initialize)
+
+    (add-to-list 'package-archives
+		'("melpa" . "https://melpa.org/packages/") t)
+
+    (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+    (setq use-package-verbose       t
+	use-package-always-ensure t)
+
+    (require 'use-package)
+    #+END_SRC
+
+** Sane defaults
+
+   #+BEGIN_SRC emacs-lisp
+    (menu-bar-mode -1)
+
+    (scroll-bar-mode -1)
+
+    (tool-bar-mode -1)
+
+    (add-hook 'prog-mode-hook #'linum-relative-mode)
+
+    (add-to-list 'default-frame-alist
+		'(ns-transparent-titlebar . t))
+
+    (setq
+    make-backup-files         nil
+    auto-save-list-file-name  nil
+    auto-save-default         nil
+    inhibit-startup-message   t
+    visible-bell              nil)
+
+    (set-face-attribute 'default nil :height 140)
+
+    (setq ring-bell-function
+	(lambda ()
+	    (invert-face 'mode-line)
+	    (run-with-timer 0.1 nil 'invert-face 'mode-line)))
+
+    (setq custom-file
+	(concat
+	(file-name-directory user-emacs-directory) "custom.el"))
+    (unless (file-exists-p custom-file) (write-region "" nil custom-file))
+    (load custom-file)
+   #+END_SRC
+  
+** User lisp
+
+   Elisp that I have written or copied lives in =./lisp=. Add it to the load path
+   and require whats there.
+
+   #+BEGIN_SRC emacs-lisp
+    (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
+    (require 'utility-functions)
+   #+END_SRC
+
+** Core packages
+
+   #+BEGIN_SRC emacs-lisp
+    (use-package exec-path-from-shell
+    :init
+    (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
+
+    (use-package evil
+    :init
+    (setq evil-want-keybinding nil)
+    (setq evil-search-module 'evil-search)
+    (use-package evil-collection
+    :config
+    (evil-collection-init))
+    (use-package linum-relative)
+    (use-package evil-surround
+	:config
+	(global-evil-surround-mode t))
+    :config
+    (evil-mode t))
+
+    (use-package which-key
+    :init (which-key-mode))
+
+    (use-package general
+    :config
+    (general-evil-setup t))
+
+    (use-package projectile
+    :init
+    (projectile-mode t))
+
+    (use-package smartparens
+    :init
+    (require 'smartparens-config)
+    (add-hook 'prog-mode-hook #'smartparens-mode))
+
+    (use-package doom-modeline
+    :init
+    (setq doom-modeline-height 22)
+    :hook (after-init . doom-modeline-mode))
+
+    (use-package editorconfig
+    :ensure t
+    :config
+    (editorconfig-mode 1))
+
+    (use-package flycheck)
+    
+    (use-package multi-term
+    :general
+     (general-nmap
+        :prefix "SPC"
+        "t"  '(:ignore t :which-key "Terminals")
+        "to" 'multi-term
+        "tn" 'multi-term-next
+        "tp" 'multi-term-prev))
+   #+END_SRC
+
+** Core keybindings
+
+   #+BEGIN_SRC emacs-lisp
+(general-define-key
+    :keymaps 'override
+    :states '(normal visual motion)
+    :prefix "SPC"
+    "w"  '(:ignore t :which-key "Windows")
+    "wV" 'evil-window-vsplit
+    "wS" 'evil-window-split
+    "wk" 'evil-window-up
+    "wj" 'evil-window-down
+    "wh" 'evil-window-left
+    "wl" 'evil-window-right
+    "wo" 'delete-other-windows
+    "wd" 'delete-window
+    "b"  '(:ignore t :which-key "Buffers")
+    "bd" 'kill-this-buffer
+    "bb" 'helm-buffers-list
+    ";"  'comment-or-uncomment-region)
+   #+END_SRC
+
+** Org mode
+
+   #+BEGIN_SRC emacs-lisp
+
+(add-to-list 'org-modules 'org-habit t)
+
+(require 'org-habit)
+(require 'org-mouse)
+
+(setq org-agenda-files 
+'(
+"~/Dropbox/org/habits.org"
+"~/Dropbox/org/todo.org"
+))
+(setq org-log-into-drawer t)
+
+(use-package org
+  :general
+   (general-nmap
+    :prefix "SPC"
+    "o"  '(:ignore t :which-key "Org")
+    "oa" 'org-agenda))
+  
+(use-package evil-org
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
+
+(use-package magit-org-todos
+  :config
+  (magit-org-todos-autoinsert))
+
+  (use-package toc-org
+:after org
+:hook (org-mode . toc-org-enable))
+   #+END_SRC
+
+** Magit
+
+   #+BEGIN_SRC emacs-lisp
+(use-package magit
+  :init
+  (use-package evil-magit)
+  (add-hook 'git-commit-mode-hook 'evil-insert-state)
+  :general
+  (general-define-key
+   :keymaps 'override
+   :states '(normal visual motion)
+   :prefix "SPC"
+   "g"  '(:ignore t :which-key "Git")
+   "gs" '(magit-status :which-key "git status")))
+   #+END_SRC
+
+** Completion
+
+   #+BEGIN_SRC emacs-lisp
+     (eval-and-compile
+       (require 'subr-x))
+
+     (use-package helm
+       :init
+       (require 'helm-config)
+       (setq helm-completion-style 'helm-fuzzy)
+       (setq helm-M-x-fuzzy-match t)
+       (use-package helm-projectile)
+       (use-package helm-rg)
+       (use-package helm-ag
+        :init
+	(setq helm-ag-base-command "rg --no-heading")
+	:general
+	(general-define-key
+	 :keymaps 'helm-ag-map
+	 "C-c C-e" 'helm-ag-edit))
+       (helm-mode)
+       (helm-autoresize-mode t)
+	:general
+	(general-define-key
+	 :keymaps 'override
+	 :states '(normal visual motion)
+	 :prefix "SPC"
+	 "SPC" '(helm-M-x :which-key "M-x")
+	 "p"   '(:ignore t :which-key "Project")
+	 "pf"  '(helm-projectile-find-file :which-key "Find in project")
+	 "pp"  '(helm-projectile-switch-project :which-key "Switch project")
+	 "f"   '(:ignore t :which-key "Files")
+	 "ff"  '(helm-find-files :which-key "Find file")
+	 "s"   '(:ignore t :which-key "Search")
+  	 "sp"  '(helm-projectile-rg :which-key "Search in project")))
+
+     (use-package company
+       :init
+       (add-hook 'after-init-hook 'global-company-mode)
+       (use-package yasnippet))
+   #+END_SRC
+
+** LSP
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package lsp-mode
+       :config
+       (setq lsp-rust-server 'rust-analyzer)
+       :hook ((rustic-mode . lsp-rust-switch-server)
+              (rustic-mode . lsp)
+	      (lsp-mode . lsp-enable-which-key-integration))
+       :commands lsp
+       :general
+       (general-define-key
+	:keymaps 'override
+	:states '(normal visual motion)
+	:prefix "SPC"
+	"l"   '(:ignore t :which-key "Lang server")
+	"lf"  '(lsp-find-definition :which-key "Find definition")))
+
+     (use-package lsp-ui :commands lsp-ui-mode)
+     (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+     (use-package dap-mode)
+   #+END_SRC
+
+** Langauges
+*** Web
+
+    #+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :mode
+  ("\\.html\\.erb$" "\\.js\\.erb$" "\\.jsx?$" "\\.html\\.eex$")
+  :init
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-auto-expanding t)
+  (setq web-mode-enable-css-colorization t))
+  
+(use-package emmet-mode
+:hook (web-mode . emmet-mode))
+    #+END_SRC
+
+*** Ruby
+
+    #+BEGIN_SRC emacs-lisp
+(use-package rspec-mode
+ :general
+  (general-nmap
+   :prefix "SPC"
+   "r"     '(:ignore t :which-key "Rspec")
+   "r TAB" 'rspec-toggle-spec-and-target
+   "ra"    'rspec-verify-all
+   "rr"    'rspec-rerun
+   "rm"    'rspec-verify-matching
+   "rf"    'rspec-run-last-failed))
+   
+(use-package ruby-mode
+  :init
+  (use-package inf-ruby
+    :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+    (setq ruby-insert-encoding-magic-comment nil)
+  (use-package chruby)
+  (use-package bundler
+    :general
+     (general-nmap
+      :prefix "SPC"
+      "b"  '(:ignore t :which-key "Bundler")
+      "bi" 'bundle-install)))
+    #+END_SRC
+    
+*** Go
+
+    #+BEGIN_SRC emacs-lisp
+(use-package go-mode
+:init
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save))
+(use-package go-errcheck)
+    #+END_SRC
+ 
+*** Elixir
+ 
+    #+BEGIN_SRC emacs-lisp
+    (use-package elixir-mode)
+    (use-package alchemist)
+    #+END_SRC
+   
+*** Javascript
+
+    #+BEGIN_SRC emacs-lisp
+(use-package coffee-mode
+  :mode 
+  ("\\.coffee$" "Cakefile" "\\.coffee\\.erb$")
+  :init
+  (setq coffee-tab-width 2))
+
+(setq js-indent-level 2)
+    #+END_SRC
+
+*** Elm
+
+    #+BEGIN_SRC emacs-lisp
+(use-package elm-mode)
+    #+END_SRC
+
+*** Slim
+
+    #+BEGIN_SRC emacs-lisp
+(use-package slim-mode)
+(use-package slim-inky-mode
+  :ensure nil
+  :load-path "lisp/"
+  :mode 
+  ("\\.inky$"))
+
+(setq slim-indent-offset 2)
+    #+END_SRC
+*** Lua
+
+    #+BEGIN_SRC emacs-lisp
+(use-package lua-mode)
+    #+END_SRC
+
+*** Yaml
+
+    #+BEGIN_SRC emacs-lisp
+(use-package yaml-mode
+  :mode
+  (("\\.\\(yml\\|yaml\\)\\'" . yaml-mode)
+   ("Procfile\\'" . yaml-mode))
+  :config
+  (add-hook 'yaml-mode-hook
+	    '(lambda ()
+	       (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+    #+END_SRC
+
+*** Rust
+
+    #+BEGIN_SRC emacs-lisp
+(use-package toml-mode)
+(use-package rustic
+ :config
+ (setq lsp-rust-server 'rust-analyzer)
+ :general
+  (general-nmap
+   :prefix "SPC"
+   "c"  '(:ignore t :which-key "Cargo")
+   "ct" 'rustic-cargo-test
+   "cr" 'rustic-cargo-run
+   "cb" 'rustic-cargo-build
+   "cf" 'rustic-cargo-fmt
+   "cc" 'rustic-cargo-clippy
+   "co" 'rustic-cargo-outdated))
+    #+END_SRC
+
+*** Swift
+
+    #+BEGIN_SRC emacs-lisp
+(use-package swift-mode)
+    #+END_SRC
+
+** Theme
+   #+BEGIN_SRC emacs-lisp
+(use-package color-theme-sanityinc-tomorrow
+    :config (load-theme 'sanityinc-tomorrow-eighties t))
+   #+END_SRC
+* MISC
+No home for this code for now. Just dumping it here until I get the config.org 
+rewrite going
+   #+BEGIN_SRC emacs-lisp
+(use-package foreman-mode
+:load-path "~/code/foreman-mode"
+:config
+(setq foreman-procfile-name "Procfile.dev")
+:general
+(general-nmap
+:prefix "SPC"
+"f"   '(:ignore t :which-key "foreman")
+"fs"  'foreman-start
+"f."  'foreman-view-buffer
+"fp"  '(:ignore t :which-key "processes")
+"fps" 'foreman-start-proc
+"fpr" 'foreman-restart-proc))
+
+(exec-path-from-shell-initialize)
+(server-start)
+   #+END_SRC
+   

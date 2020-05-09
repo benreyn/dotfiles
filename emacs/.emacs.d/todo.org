@@ -1,0 +1,5 @@
+* TODO Setup [[https://github.com/wasamasa/eyebrowse][eyebrowse]]
+* TODO Write installation instructions
+* TODO Tweak org-mode config for a decent GTD workflow
+* TODO Look into using [[https://github.com/magit/forge][forge]] 
+* TODO Setup minitest and rails-mode w/ kbds

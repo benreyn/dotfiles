@@ -282,14 +282,24 @@
 ** LSP
 
    #+BEGIN_SRC emacs-lisp
-  (use-package lsp-mode
-  :hook ((rustic-mode . lsp)
-	 (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+     (use-package lsp-mode
+       :config
+       (setq lsp-rust-server 'rust-analyzer)
+       :hook ((rustic-mode . lsp-rust-switch-server)
+              (rustic-mode . lsp)
+	      (lsp-mode . lsp-enable-which-key-integration))
+       :commands lsp
+       :general
+       (general-define-key
+	:keymaps 'override
+	:states '(normal visual motion)
+	:prefix "SPC"
+	"l"   '(:ignore t :which-key "Lang server")
+	"lf"  '(lsp-find-definition :which-key "Find definition")))
 
-  (use-package lsp-ui :commands lsp-ui-mode)
-  (use-package helm-lsp :commands helm-lsp-workspace-symbol)
-  (use-package dap-mode)
+     (use-package lsp-ui :commands lsp-ui-mode)
+     (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+     (use-package dap-mode)
    #+END_SRC
 
 ** Langauges
@@ -342,7 +352,11 @@
 *** Go
 
     #+BEGIN_SRC emacs-lisp
-(use-package go-mode)
+(use-package go-mode
+:init
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save))
+(use-package go-errcheck)
     #+END_SRC
  
 *** Elixir

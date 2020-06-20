@@ -192,8 +192,8 @@
 
 (setq org-agenda-files 
 '(
-"~/Dropbox/org/habits.org"
-"~/Dropbox/org/todo.org"
+"~/Dropbox/org/todo/habits.org"
+"~/Dropbox/org/todo/todo.org"
 ))
 (setq org-log-into-drawer t)
 
@@ -211,6 +211,12 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
+  (use-package org-journal
+  :ensure t
+  :defer t
+  :custom
+  (org-journal-dir "~/Dropbox/org/journal/")
+  (org-journal-date-format "%A, %d %B %Y"))
 
 (use-package magit-org-todos
   :config
@@ -450,9 +456,6 @@ No home for this code for now. Just dumping it here until I get the config.org
 rewrite going
    #+BEGIN_SRC emacs-lisp
 (use-package foreman-mode
-:load-path "~/code/foreman-mode"
-:config
-(setq foreman-procfile-name "Procfile.dev")
 :general
 (general-nmap
 :prefix "SPC"
@@ -463,7 +466,12 @@ rewrite going
 "fps" 'foreman-start-proc
 "fpr" 'foreman-restart-proc))
 
+(use-package projectile-rails :ensure t :defer t
+  :config
+  (add-hook 'projectile-mode-hook 'projectile-rails-on))
+
 (exec-path-from-shell-initialize)
 (server-start)
    #+END_SRC
+   
    

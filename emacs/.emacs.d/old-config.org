@@ -339,7 +339,8 @@
    "ra"    'rspec-verify-all
    "rr"    'rspec-rerun
    "rm"    'rspec-verify-matching
-   "rf"    'rspec-run-last-failed))
+   "rf"    'rspec-run-last-failed
+   "rs"    'rspec-verify-single))
    
 (use-package ruby-mode
   :init
@@ -353,6 +354,13 @@
       :prefix "SPC"
       "b"  '(:ignore t :which-key "Bundler")
       "bi" 'bundle-install)))
+      
+(use-package rubocopfmt
+  :hook
+  (ruby-mode . rubocopfmt-mode)
+  :init
+  (setq rubocopfmt-use-bundler-when-possible t)
+  (setq rubocopfmt-on-save-use-lsp-format-buffer t))
     #+END_SRC
     
 *** Go
@@ -470,6 +478,11 @@ rewrite going
   :config
   (add-hook 'projectile-mode-hook 'projectile-rails-on))
 
+  (use-package vue-mode
+   :config
+   ;; 0, 1, or 2, representing (respectively) none, low, and high coloring
+   (setq mmm-submode-decoration-level 0))
+   
 (exec-path-from-shell-initialize)
 (server-start)
    #+END_SRC

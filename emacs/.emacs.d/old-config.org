@@ -76,6 +76,7 @@
     visible-bell              nil)
 
     (set-face-attribute 'default nil :height 140)
+    (set-frame-font "Source Code Pro")
 
     (setq ring-bell-function
 	(lambda ()
@@ -95,68 +96,70 @@
    and require whats there.
 
    #+BEGIN_SRC emacs-lisp
-    (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
-    (require 'utility-functions)
+	  (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
+	  (add-to-list 'load-path (concat user-emacs-directory "/usr/local/share/emacs/site-lisp/"))
+	  (require 'utility-functions)
    #+END_SRC
 
 ** Core packages
 
    #+BEGIN_SRC emacs-lisp
-    (use-package exec-path-from-shell
-    :init
-    (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)))
+     (use-package exec-path-from-shell
+     :init
+     (when (memq window-system '(mac ns))
+     (exec-path-from-shell-initialize)))
 
-    (use-package evil
-    :init
-    (setq evil-want-keybinding nil)
-    (setq evil-search-module 'evil-search)
-    (use-package evil-collection
-    :config
-    (evil-collection-init))
-    (use-package linum-relative)
-    (use-package evil-surround
-	:config
-	(global-evil-surround-mode t))
-    :config
-    (evil-mode t))
+     (use-package evil
+     :init
+     (setq evil-want-keybinding nil)
+     (setq evil-search-module 'evil-search)
+     (use-package evil-collection
+     :config
+     (evil-collection-init))
+     (use-package linum-relative)
+     (use-package evil-surround
+	 :config
+	 (global-evil-surround-mode t))
+     :config
+     (evil-mode t))
 
-    (use-package which-key
-    :init (which-key-mode))
+     (use-package which-key
+     :init (which-key-mode))
 
-    (use-package general
-    :config
-    (general-evil-setup t))
+     (use-package general
+     :config
+     (general-evil-setup t))
 
-    (use-package projectile
-    :init
-    (projectile-mode t))
+     (use-package sudo-edit)
+     (use-package projectile
+     :init
+     (projectile-mode t))
 
-    (use-package smartparens
-    :init
-    (require 'smartparens-config)
-    (add-hook 'prog-mode-hook #'smartparens-mode))
+     (use-package smartparens
+     :init
+     (require 'smartparens-config)
+     (add-hook 'prog-mode-hook #'smartparens-mode))
 
-    (use-package doom-modeline
-    :init
-    (setq doom-modeline-height 22)
-    :hook (after-init . doom-modeline-mode))
+     (use-package doom-modeline
+     :init
+     (setq doom-modeline-height 22)
+     :hook (after-init . doom-modeline-mode))
 
-    (use-package editorconfig
-    :ensure t
-    :config
-    (editorconfig-mode 1))
+     (use-package editorconfig
+     :ensure t
+     :config
+     (editorconfig-mode 1))
 
-    (use-package flycheck)
-    
-    (use-package multi-term
-    :general
-     (general-nmap
-        :prefix "SPC"
-        "t"  '(:ignore t :which-key "Terminals")
-        "to" 'multi-term
-        "tn" 'multi-term-next
-        "tp" 'multi-term-prev))
+     (use-package flycheck)
+
+     (use-package multi-term
+     :general
+      (general-nmap
+	 :prefix "SPC"
+	 "t"  '(:ignore t :which-key "Terminals")
+	 "to" 'multi-term
+	 "tn" 'multi-term-next
+	 "tp" 'multi-term-prev))
    #+END_SRC
 
 ** Core keybindings
@@ -192,12 +195,14 @@
 
 (setq org-agenda-files 
 '(
-"~/Dropbox/org/todo/habits.org"
-"~/Dropbox/org/todo/todo.org"
+"~/Dropbox/org/personal.org"
+"~/Dropbox/org/work.org"
 ))
 (setq org-log-into-drawer t)
 
 (use-package org
+:config
+  (add-hook 'org-mode-hook 'auto-fill-mode)
   :general
    (general-nmap
     :prefix "SPC"
@@ -314,7 +319,7 @@
     #+BEGIN_SRC emacs-lisp
 (use-package web-mode
   :mode
-  ("\\.html\\.erb$" "\\.js\\.erb$" "\\.jsx?$" "\\.html\\.eex$")
+  ("\\.html\\.erb$" "\\.js\\.erb$" "\\.tsx?$" "\\.jsx?$" "\\.html\\.eex$")
   :init
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
@@ -330,37 +335,38 @@
 *** Ruby
 
     #+BEGIN_SRC emacs-lisp
-(use-package rspec-mode
- :general
-  (general-nmap
-   :prefix "SPC"
-   "r"     '(:ignore t :which-key "Rspec")
-   "r TAB" 'rspec-toggle-spec-and-target
-   "ra"    'rspec-verify-all
-   "rr"    'rspec-rerun
-   "rm"    'rspec-verify-matching
-   "rf"    'rspec-run-last-failed
-   "rs"    'rspec-verify-single))
-   
-(use-package ruby-mode
-  :init
-  (use-package inf-ruby
-    :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
-    (setq ruby-insert-encoding-magic-comment nil)
-  (use-package chruby)
-  (use-package bundler
-    :general
-     (general-nmap
-      :prefix "SPC"
-      "b"  '(:ignore t :which-key "Bundler")
-      "bi" 'bundle-install)))
-      
-(use-package rubocopfmt
-  :hook
-  (ruby-mode . rubocopfmt-mode)
-  :init
-  (setq rubocopfmt-use-bundler-when-possible t)
-  (setq rubocopfmt-on-save-use-lsp-format-buffer t))
+      (use-package rspec-mode
+       :general
+	(general-nmap
+	 :prefix "SPC"
+	 "r"     '(:ignore t :which-key "Rspec")
+	 "r TAB" 'rspec-toggle-spec-and-target
+	 "ra"    'rspec-verify-all
+	 "rr"    'rspec-rerun
+	 "rm"    'rspec-verify-matching
+	 "rf"    'rspec-run-last-failed
+	 "rs"    'rspec-verify-single))
+
+      (use-package ruby-mode
+	:init
+	(use-package inf-ruby
+	  :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))
+	  (setq ruby-insert-encoding-magic-comment nil)
+	(use-package chruby)
+	(use-package bundler
+	  :general
+	   (general-nmap
+	    :prefix "SPC"
+	    "b"  '(:ignore t :which-key "Bundler")
+	    "bi" 'bundle-install)))
+
+      (use-package rubocop)
+      ; (use-package rubocopfmt
+      ;   :hook
+      ;   (ruby-mode . rubocopfmt-mode)
+      ;   :init
+      ;   (setq rubocopfmt-use-bundler-when-possible t)
+      ;   (setq rubocopfmt-on-save-use-lsp-format-buffer t))
     #+END_SRC
     
 *** Go
@@ -463,28 +469,37 @@
 No home for this code for now. Just dumping it here until I get the config.org 
 rewrite going
    #+BEGIN_SRC emacs-lisp
-(use-package foreman-mode
-:general
-(general-nmap
-:prefix "SPC"
-"f"   '(:ignore t :which-key "foreman")
-"fs"  'foreman-start
-"f."  'foreman-view-buffer
-"fp"  '(:ignore t :which-key "processes")
-"fps" 'foreman-start-proc
-"fpr" 'foreman-restart-proc))
+     (use-package foreman-mode
+       :general
+       (general-nmap
+	 :prefix "SPC"
+	 "f"   '(:ignore t :which-key "foreman")
+	 "fs"  'foreman-start
+	 "f."  'foreman-view-buffer
+	 "fp"  '(:ignore t :which-key "processes")
+	 "fps" 'foreman-start-proc
+	 "fpr" 'foreman-restart-proc))
+     (defun markdown-html (buffer)
+       (princ (with-current-buffer buffer
+		(format "<!DOCTYPE html><html><title>Impatient Markdown</title><xmp theme=\"united\" style=\"display:none;\"> %s  </xmp><script src=\"http://strapdownjs.com/v/0.2/strapdown.js\"></script></html>" (buffer-substring-no-properties (point-min) (point-max))))
+	      (current-buffer)))
+     (use-package impatient-mode)
 
-(use-package projectile-rails :ensure t :defer t
-  :config
-  (add-hook 'projectile-mode-hook 'projectile-rails-on))
 
-  (use-package vue-mode
-   :config
-   ;; 0, 1, or 2, representing (respectively) none, low, and high coloring
-   (setq mmm-submode-decoration-level 0))
-   
-(exec-path-from-shell-initialize)
-(server-start)
+       (use-package lilypond-mode
+	 :ensure nil
+	 :load-path "/usr/local/share/emacs/site-lisp/")
+
+       (use-package projectile-rails :ensure t :defer t
+	 :config
+	 (add-hook 'projectile-mode-hook 'projectile-rails-on))
+
+       (use-package vue-mode
+	 :config
+	 ;; 0, 1, or 2, representing (respectively) none, low, and high coloring
+	 (setq mmm-submode-decoration-level 0))
+
+       (exec-path-from-shell-initialize)
+       (server-start)
+
    #+END_SRC
-   
-   

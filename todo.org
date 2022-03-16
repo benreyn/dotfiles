@@ -1,3 +1,4 @@
+* TODO Setup a keybinding for `helm-show-kill-ring`
 * TODO Get my bashrc organized and working on both Arch and Ubuntu
 * TODO script my xrandr and desktop backround stuff stuff
   - http://sergeiturukin.com/2017/07/03/laptop-dock-archlinux.html

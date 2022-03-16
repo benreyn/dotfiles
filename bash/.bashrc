@@ -29,18 +29,21 @@ alias ec='emacsclient -tty'
 
 # gpg
 
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
+# if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+#     source ~/.gnupg/.gpg-agent-info
+#     export GPG_AGENT_INFO
+# else
+#     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+# fi
 
 blowport() {
     lsof -ti tcp:$1 | xargs kill
 }
 
-alias ls='ls --color=auto'
+alias puma-fuckit="pkill -9 -f 'rb-fsevent|rails|spring|puma'"
+
+# alias ls='ls --color=auto'
+. /usr/local/opt/asdf/libexec/asdf.sh
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin

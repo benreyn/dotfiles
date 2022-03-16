@@ -25,3 +25,8 @@
   sync = !git fetch upstream && git merge upstream/master
 [github]
 	user = benreyn
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

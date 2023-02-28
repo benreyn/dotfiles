@@ -63,7 +63,7 @@
 
     (tool-bar-mode -1)
 
-    (add-hook 'prog-mode-hook #'linum-relative-mode)
+    ;; (add-hook 'prog-mode-hook #'linum-relative-mode)
 
     (add-to-list 'default-frame-alist
 		'(ns-transparent-titlebar . t))
@@ -237,7 +237,7 @@
    #+BEGIN_SRC emacs-lisp
 (use-package magit
   :init
-  (use-package evil-magit)
+  ;; (use-package evil-magit)
   (add-hook 'git-commit-mode-hook 'evil-insert-state)
   :general
   (general-define-key
@@ -361,12 +361,12 @@
 	    "bi" 'bundle-install)))
 
       (use-package rubocop)
-      ; (use-package rubocopfmt
-      ;   :hook
-      ;   (ruby-mode . rubocopfmt-mode)
-      ;   :init
-      ;   (setq rubocopfmt-use-bundler-when-possible t)
-      ;   (setq rubocopfmt-on-save-use-lsp-format-buffer t))
+      ;; (use-package rubocopfmt
+      ;;   :hook
+      ;;   (ruby-mode . rubocopfmt-mode)
+      ;;   :init
+      ;;   (setq rubocopfmt-use-bundler-when-possible t)
+      ;;   (setq rubocopfmt-on-save-use-lsp-format-buffer t))
     #+END_SRC
     
 *** Go

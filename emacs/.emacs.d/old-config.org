@@ -35,23 +35,34 @@
     (add-hook 'emacs-startup-hook #'benreyn/restore-startup-optimizations)
     #+END_SRC
 
-*** Package Management (use-package)
+*** Package Management use-package + quelpa
 
     #+BEGIN_SRC emacs-lisp
-    (setq package-enable-at-startup nil)
-    (package-initialize)
+      (setq package-enable-at-startup nil)
+      (package-initialize)
 
-    (add-to-list 'package-archives
-		'("melpa" . "https://melpa.org/packages/") t)
+      (add-to-list 'package-archives
+		   '("melpa" . "https://melpa.org/packages/") t)
 
-    (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
+      (unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
 
-    (setq use-package-verbose       t
-	use-package-always-ensure t)
+      (setq use-package-verbose       t
+	    use-package-always-ensure t)
 
-    (require 'use-package)
+      (require 'use-package)
+
+      (use-package quelpa)
+
+      (require 'quelpa)
+
+      (quelpa
+       '(quelpa-use-package
+	 :fetcher git
+	 :url "https://github.com/quelpa/quelpa-use-package.git"))
+
+      (require 'quelpa-use-package)
     #+END_SRC
 
 ** Sane defaults
@@ -290,7 +301,19 @@
        (use-package yasnippet))
    #+END_SRC
 
+** Github Copilot
+
+#+BEGIN_SRC emacs-lisp
+  (use-package copilot
+    :quelpa (copilot :fetcher github
+		     :repo "zerolfx/copilot.el"
+		     :branch "main"
+		     :files ("dist" "*.el"))
+		     :hook ((prog-mode. cop-pilot-mode)))
+#+END_SRC
+   
 ** LSP
+*** TODO use eglot here instead?
 
    #+BEGIN_SRC emacs-lisp
      (use-package lsp-mode

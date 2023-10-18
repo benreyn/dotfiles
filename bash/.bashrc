@@ -42,8 +42,9 @@ blowport() {
 
 alias puma-fuckit="pkill -9 -f 'rb-fsevent|rails|spring|puma'"
 
-# alias ls='ls --color=auto'
-. /usr/local/opt/asdf/libexec/asdf.sh
+alias ls='ls --color=auto'
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin

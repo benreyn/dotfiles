@@ -12,5 +12,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # asdf version manager
-. $(brew --prefix asdf)/asdf.sh
-. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+# . $(brew --prefix asdf)/asdf.sh
+# . $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+

@@ -1,8 +1,7 @@
 * TODO Setup a keybinding for `helm-show-kill-ring`
-* TODO Get my bashrc organized and working on both Arch and Ubuntu
-* TODO script my xrandr and desktop backround stuff stuff
-  - http://sergeiturukin.com/2017/07/03/laptop-dock-archlinux.html
-* TODO get a nice polybar config going
-* TODO cleanup old mac app configs (dont need them anymore)
-* TODO Follow this tut maybe 
-  - https://www.youtube.com/watch?v=ARKIwOlazKI
+* TODO Get my bashrc organized and working on both Mac and WSL-Ubuntu
+* TODO org-mode enhancements
+** [[https://github.com/gizmomogwai/org-kanban][org-kanban]]
+** [[https://github.com/kidd/org-gcal.el][org-gcal]]
+** [[https://github.com/org-roam/org-roam][org-roam]] and [[https://github.com/org-roam/org-roam-ui][org-roam-ui]]
+** [[https://github.com/dmitrym0/org-hyperscheduler][org-hyperscheduler]]

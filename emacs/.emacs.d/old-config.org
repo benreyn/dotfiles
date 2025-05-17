@@ -509,6 +509,31 @@
 (use-package elm-mode)
     #+END_SRC
 
+*** Haml
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package haml-mode
+	:ensure t
+	:config
+	("\\.haml$"))
+      
+	;; haml-mode has been giving me problems, so lets just force load it until I dont need it anymore
+      (let* ((package-dirs (directory-files package-user-dir t "^haml-mode-[0-9]+"))
+	       (haml-dir (car (sort package-dirs #'string>)))  ;; Get the latest version
+	       (haml-file (when haml-dir
+			    (expand-file-name "haml-mode.el" haml-dir))))
+	  (if (and haml-file (file-exists-p haml-file))
+	      (progn
+		(load-file haml-file)
+		(message "Successfully loaded haml-mode from %s" haml-file))
+	    (message "Could not find haml-mode.el in package directory")))
+
+
+
+      (use-package rainbow-mode
+	:ensure t)
+    #+END_SRC
+    
 *** Slim
 
     #+BEGIN_SRC emacs-lisp

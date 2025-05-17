@@ -590,6 +590,35 @@
 (use-package swift-mode)
     #+END_SRC
 
+*** Sonic Pi config
+
+#+BEGIN_SRC emacs-lisp
+   
+;;    (use-package sonic-pi
+;;   :ensure t
+;;   :custom
+;;   (sonic-pi-path "/usr/lib/sonic-pi/")
+;;   (sonic-pi-server-bin "server/bin/sonic-pi-server.rb")
+;;   :config)
+   
+   
+   
+;;    (use-package sonic-pi
+;;   :quelpa (sonic-pi :fetcher github :repo "benreyn/sonic-pi.el"))
+
+;; (add-to-list 'load-path "~/.sonic-pi.el/")
+;; (require 'sonic-pi)
+;; (setq sonic-pi-path "SONIC-PI-INSTALL-DIR/") ; Must end with "/"
+
+;; ;; Optionally define a hook
+;; (add-hook 'sonic-pi-mode-hook
+;;           (lambda ()
+;;             ;; This setq can go here instead if you wish
+;;             (setq sonic-pi-path "SONIC-PI-INSTALL-DIR/")
+;;             (define-key ruby-mode-map "\C-c\C-b" 'sonic-pi-stop-all)))
+	    
+#+END_SRC emacs-lisp
+   
 ** Theme
    #+BEGIN_SRC emacs-lisp
 (use-package color-theme-sanityinc-tomorrow

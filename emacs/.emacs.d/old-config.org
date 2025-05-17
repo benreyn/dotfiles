@@ -435,6 +435,8 @@
 	  "rs"    'rspec-verify-single))
 
       (use-package ruby-mode
+	:mode
+	("\\.xml\\.builder$")
 	:init
 	(use-package inf-ruby
 	  :init (add-hook 'after-init-hook 'inf-ruby-switch-setup))

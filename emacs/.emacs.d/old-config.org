@@ -369,11 +369,11 @@
 
 #+BEGIN_SRC emacs-lisp
   (use-package copilot
-    :quelpa (copilot :fetcher github
-		     :repo "zerolfx/copilot.el"
-		     :branch "main"
-		     :files ("dist" "*.el"))
-		     :hook ((prog-mode. cop-pilot-mode)))
+  :quelpa (copilot :fetcher github
+		   :repo "copilot-emacs/copilot.el"
+		   :branch "main"
+		   :files ("*.el"))
+		   :hook ((prog-mode . co-pilot-mode)))
 #+END_SRC
    
 ** LSP

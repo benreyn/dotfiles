@@ -48,3 +48,8 @@ alias ls='ls --color=auto'
 
 export PATH="$HOME/.docker/bin:$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export PATH="$HOME/.fvm_flutter/bin:$PATH"
+
+# Added by bigcartel dev script
+export PATH="/Users/benreyn/code/bc/cartel:$PATH"
+export BIG_CARTEL_DOCKER_COMPOSE_DIR="/Users/benreyn/code/bc/compose-dev"

@@ -4,3 +4,4 @@ if [ -e /Users/benreyn/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/benrey
 # Added by OrbStack: command-line tools and integration
 # Comment this line if you don't want it to be added again.
 source ~/.orbstack/shell/init.bash 2>/dev/null || :
+
